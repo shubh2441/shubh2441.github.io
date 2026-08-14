@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowWMS — Warehouse Intelligence, Redefined</title>
+    <meta name="description" content="The AI-powered Warehouse Management System for modern businesses. Streamline inventory, accelerate fulfillment, and scale with confidence.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader__inner">
+            <div class="preloader__logo">Flow<span>WMS</span></div>
+            <div class="preloader__bar"><div class="preloader__fill" id="preloader-fill"></div></div>
+            <div class="preloader__percent" id="preloader-percent">0%</div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursor-follower"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container navbar__container">
+            <a href="#" class="navbar__logo">
+                <span class="logo-hex">⬡</span>Flow<span>WMS</span>
+            </a>
+            <ul class="navbar__links" id="navbar-links">
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+                <li><a href="#pricing" class="nav-link">Pricing</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="navbar__actions">
+                <a href="#" class="btn btn--ghost">Sign In</a>
+                <a href="#contact" class="btn btn--primary navbar__cta">Get Started</a>
+            </div>
+            <button class="navbar__burger" id="navbar-burger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <ul>
+            <li><a href="#features" class="mobile-link">Features</a></li>
+            <li><a href="#how-it-works" class="mobile-link">How It Works</a></li>
+            <li><a href="#pricing" class="mobile-link">Pricing</a></li>
+            <li><a href="#about" class="mobile-link">About</a></li>
+            <li><a href="#contact" class="mobile-link">Contact</a></li>
+        </ul>
+        <a href="#contact" class="btn btn--primary mobile-cta">Get Started Free</a>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         HERO SECTION
+    ═══════════════════════════════════════════ -->
+    <section class="hero" id="home">
+        <div class="hero__bg">
+            <div class="blob blob--1"></div>
+            <div class="blob blob--2"></div>
+            <div class="blob blob--3"></div>
+            <div class="grid-overlay"></div>
+        </div>
+        <div class="container hero__container">
+            <div class="hero__content">
+                <div class="hero__badge reveal-badge">
+                    <span class="badge__pulse"></span>
+                    🚀 Now with AI-Powered Demand Forecasting
+                </div>
+                <h1 class="hero__title">
+                    Warehouse Intelligence,<br>
+                    <span class="gradient-text typed-text"></span>
+                </h1>
+                <p class="hero__subtitle">
+                    The AI-powered WMS that helps businesses streamline inventory,
+                    accelerate fulfillment, and scale operations — all from a single,
+                    unified platform.
+                </p>
+                <div class="hero__actions">
+                    <a href="#contact" class="btn btn--primary btn--lg">
+                        Start Free Trial
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="#demo" class="btn btn--play btn--lg">
+                        <span class="play-circle">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </span>
+                        Watch Demo
+                    </a>
+                </div>
+                <div class="hero__metrics">
+                    <div class="hero-metric">
+                        <div class="hero-metric__value">500+</div>
+                        <div class="hero-metric__label">Companies</div>
+                    </div>
+                    <div class="hero-metric__sep"></div>
+                    <div class="hero-metric">
+                        <div class="hero-metric__value">99.9%</div>
+                        <div class="hero-metric__label">Uptime SLA</div>
+                    </div>
+                    <div class="hero-metric__sep"></div>
+                    <div class="hero-metric">
+                        <div class="hero-metric__value">40%</div>
+                        <div class="hero-metric__label">Cost Reduction</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero__visual">
+                <div class="dashboard-mockup">
+                    <div class="mockup__chrome">
+                        <div class="chrome__dots"><span></span><span></span><span></span></div>
+                        <div class="chrome__title">FlowWMS — Dashboard</div>
+                        <div class="chrome__pill">● Live</div>
+                    </div>
+                    <div class="mockup__body">
+                        <div class="mockup__stats-row">
+                            <div class="m-stat">
+                                <div class="m-stat__icon" style="background: #EEF2FF;">📦</div>
+                                <div class="m-stat__info">
+                                    <div class="m-stat__val">24,891</div>
+                                    <div class="m-stat__lbl">Total SKUs</div>
+                                </div>
+                                <div class="m-stat__change up">↑ 12%</div>
+                            </div>
+                            <div class="m-stat">
+                                <div class="m-stat__icon" style="background: #F0FDF4;">🚚</div>
+                                <div class="m-stat__info">
+                                    <div class="m-stat__val">1,284</div>
+                                    <div class="m-stat__lbl">Orders Today</div>
+                                </div>
+                                <div class="m-stat__change up">↑ 8%</div>
+                            </div>
+                        </div>
+                        <div class="mockup__chart-area">
+                            <div class="chart__label">Weekly Fulfillment Rate</div>
+                            <div class="chart__bars">
+                                <div class="chart-col"><div class="chart-bar" style="--h:60%"></div><span>M</span></div>
+                                <div class="chart-col"><div class="chart-bar" style="--h:80%"></div><span>T</span></div>
+                                <div class="chart-col"><div class="chart-bar" style="--h:70%"></div><span>W</span></div>
+                                <div class="chart-col"><div class="chart-bar chart-bar--active" style="--h:95%"></div><span>T</span></div>
+                                <div class="chart-col"><div class="chart-bar" style="--h:85%"></div><span>F</span></div>
+                                <div class="chart-col"><div class="chart-bar" style="--h:75%"></div><span>S</span></div>
+                                <div class="chart-col"><div class="chart-bar" style="--h:90%"></div><span>S</span></div>
+                            </div>
+                        </div>
+                        <div class="mockup__table">
+                            <div class="m-table-row m-table-header">
+                                <span>Product</span><span>Stock</span><span>Status</span>
+                            </div>
+                            <div class="m-table-row">
+                                <span>SKU-4821</span><span>1,204</span>
+                                <span class="m-badge m-badge--green">In Stock</span>
+                            </div>
+                            <div class="m-table-row">
+                                <span>SKU-7733</span><span>48</span>
+                                <span class="m-badge m-badge--yellow">Low Stock</span>
+                            </div>
+                            <div class="m-table-row">
+                                <span>SKU-2291</span><span>892</span>
+                                <span class="m-badge m-badge--green">In Stock</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating cards -->
+                <div class="float-card float-card--1">
+                    <div class="float-card__icon">⚡</div>
+                    <div class="float-card__data">
+                        <div class="float-card__val">2.4s</div>
+                        <div class="float-card__lbl">Avg. Pick Time</div>
+                    </div>
+                </div>
+                <div class="float-card float-card--2">
+                    <div class="float-card__icon">🎯</div>
+                    <div class="float-card__data">
+                        <div class="float-card__val">99.8%</div>
+                        <div class="float-card__lbl">Accuracy Rate</div>
+                    </div>
+                </div>
+                <div class="float-card float-card--3">
+                    <div class="float-card__icon">🤖</div>
+                    <div class="float-card__data">
+                        <div class="float-card__val">AI Active</div>
+                        <div class="float-card__lbl">Forecasting</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-hint">
+            <div class="scroll-hint__mouse"><div class="scroll-hint__wheel"></div></div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         FEATURES SECTION
+    ═══════════════════════════════════════════ -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-badge">Features</div>
+                <h2 class="section-title">Everything you need to run a<br><span class="gradient-text">smarter warehouse</span></h2>
+                <p class="section-desc">From real-time tracking to AI forecasting — every tool your team needs to optimize operations at any scale.</p>
+            </div>
+
+            <div class="feature-tabs reveal">
+                <button class="ftab active" data-tab="inventory">📦 Inventory</button>
+                <button class="ftab" data-tab="orders">🚚 Orders</button>
+                <button class="ftab" data-tab="analytics">📊 Analytics</button>
+                <button class="ftab" data-tab="mobile">📱 Mobile</button>
+            </div>
+
+            <div class="feature-panels">
+                <!-- Inventory Panel -->
+                <div class="feature-panel active" id="panel-inventory">
+                    <div class="panel-info reveal-left">
+                        <h3>Real-time Inventory Tracking</h3>
+                        <p>Monitor every item across all your warehouse locations with live, precision tracking. Eliminate discrepancies and never lose stock again.</p>
+                        <ul class="check-list">
+                            <li>Live stock monitoring across all locations</li>
+                            <li>Automated low-stock alerts & reorder triggers</li>
+                            <li>Barcode & RFID scanning support</li>
+                            <li>Batch, serial number & expiry tracking</li>
+                            <li>Smart zone & bin management</li>
+                        </ul>
+                        <a href="#contact" class="btn btn--primary">Explore Feature →</a>
+                    </div>
+                    <div class="panel-visual reveal-right">
+                        <div class="visual-card">
+                            <div class="visual-card__title">Inventory Overview</div>
+                            <div class="inv-bars">
+                                <div class="inv-bar">
+                                    <span class="inv-bar__cat">Electronics</span>
+                                    <div class="inv-bar__track"><div class="inv-bar__fill" style="--w:85%;--c:#6C63FF"></div></div>
+                                    <span class="inv-bar__val">85%</span>
+                                </div>
+                                <div class="inv-bar">
+                                    <span class="inv-bar__cat">Apparel</span>
+                                    <div class="inv-bar__track"><div class="inv-bar__fill" style="--w:62%;--c:#00D4AA"></div></div>
+                                    <span class="inv-bar__val">62%</span>
+                                </div>
+                                <div class="inv-bar">
+                                    <span class="inv-bar__cat">Food & Bev</span>
+                                    <div class="inv-bar__track"><div class="inv-bar__fill" style="--w:41%;--c:#FF6B6B"></div></div>
+                                    <span class="inv-bar__val">41%</span>
+                                </div>
+                                <div class="inv-bar">
+                                    <span class="inv-bar__cat">Industrial</span>
+                                    <div class="inv-bar__track"><div class="inv-bar__fill" style="--w:93%;--c:#6C63FF"></div></div>
+                                    <span class="inv-bar__val">93%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Orders Panel -->
+                <div class="feature-panel" id="panel-orders">
+                    <div class="panel-info reveal-left">
+                        <h3>Smart Order Management</h3>
+                        <p>Process thousands of orders simultaneously with intelligent routing, automated picking lists, and real-time status updates.</p>
+                        <ul class="check-list">
+                            <li>Multi-channel order aggregation (50+ channels)</li>
+                            <li>Intelligent routing & prioritization</li>
+                            <li>Automated pick, pack & ship workflows</li>
+                            <li>Real-time customer notifications</li>
+                            <li>Returns & refunds management portal</li>
+                        </ul>
+                        <a href="#contact" class="btn btn--primary">Explore Feature →</a>
+                    </div>
+                    <div class="panel-visual reveal-right">
+                        <div class="visual-card">
+                            <div class="visual-card__title">Order Pipeline</div>
+                            <div class="order-pipeline">
+                                <div class="pipe-stage"><span class="pipe-count">47</span><span class="pipe-lbl">Pending</span></div>
+                                <div class="pipe-arrow">→</div>
+                                <div class="pipe-stage"><span class="pipe-count">23</span><span class="pipe-lbl">Picking</span></div>
+                                <div class="pipe-arrow">→</div>
+                                <div class="pipe-stage pipe-stage--active"><span class="pipe-count">12</span><span class="pipe-lbl">Packing</span></div>
+                                <div class="pipe-arrow">→</div>
+                                <div class="pipe-stage"><span class="pipe-count">89</span><span class="pipe-lbl">Shipped</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytics Panel -->
+                <div class="feature-panel" id="panel-analytics">
+                    <div class="panel-info reveal-left">
+                        <h3>AI-Powered Analytics</h3>
+                        <p>Make smarter decisions with predictive analytics, demand forecasting, and dashboards that surface insights automatically.</p>
+                        <ul class="check-list">
+                            <li>Demand forecasting with 94%+ accuracy</li>
+                            <li>Custom dashboard builder (drag & drop)</li>
+                            <li>Cost, profitability & throughput analysis</li>
+                            <li>KPI tracking & performance alerts</li>
+                            <li>Exportable reports (PDF, Excel, CSV)</li>
+                        </ul>
+                        <a href="#contact" class="btn btn--primary">Explore Feature →</a>
+                    </div>
+                    <div class="panel-visual reveal-right">
+                        <div class="visual-card">
+                            <div class="visual-card__title">Forecast vs Actual</div>
+                            <div class="forecast-chart">
+                                <div class="fc-bars">
+                                    <div class="fc-group"><div class="fc-actual" style="height:70%"></div><div class="fc-forecast" style="height:75%"></div></div>
+                                    <div class="fc-group"><div class="fc-actual" style="height:82%"></div><div class="fc-forecast" style="height:80%"></div></div>
+                                    <div class="fc-group"><div class="fc-actual" style="height:60%"></div><div class="fc-forecast" style="height:65%"></div></div>
+                                    <div class="fc-group"><div class="fc-actual" style="height:90%"></div><div class="fc-forecast" style="height:88%"></div></div>
+                                    <div class="fc-group"><div class="fc-actual" style="height:75%"></div><div class="fc-forecast" style="height:78%"></div></div>
+                                </div>
+                                <div class="fc-legend">
+                                    <span class="fc-dot" style="background:#6C63FF"></span>Actual
+                                    <span class="fc-dot" style="background:#00D4AA;margin-left:12px"></span>Forecast
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Panel -->
+                <div class="feature-panel" id="panel-mobile">
+                    <div class="panel-info reveal-left">
+                        <h3>Mobile-First Operations</h3>
+                        <p>Empower your floor staff with powerful mobile apps that work offline and sync the moment connection is restored.</p>
+                        <ul class="check-list">
+                            <li>iOS & Android native apps</li>
+                            <li>Offline-first with automatic sync</li>
+                            <li>Voice-directed picking support</li>
+                            <li>Built-in barcode & QR scanner</li>
+                            <li>Real-time push notifications</li>
+                        </ul>
+                        <a href="#contact" class="btn btn--primary">Explore Feature →</a>
+                    </div>
+                    <div class="panel-visual reveal-right">
+                        <div class="visual-card mobile-card">
+                            <div class="phone-frame">
+                                <div class="phone-notch"></div>
+                                <div class="phone-screen">
+                                    <div class="phone-header">FlowWMS</div>
+                                    <div class="phone-task">
+                                        <div class="phone-task__icon">📦</div>
+                                        <div>
+                                            <div style="font-weight:600;font-size:.8rem">Pick Task #2841</div>
+                                            <div style="font-size:.7rem;color:#666">Aisle B4 · Shelf 3 · Qty 12</div>
+                                        </div>
+                                    </div>
+                                    <div class="phone-scan">
+                                        <div class="scan-lines"><div class="scan-beam"></div></div>
+                                        <span>Scan barcode</span>
+                                    </div>
+                                    <div class="phone-btn">Confirm Pick</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Cards -->
+    <section class="feature-cards-section">
+        <div class="container">
+            <div class="feature-cards-grid">
+                <div class="fcard reveal" style="--delay:0s">
+                    <div class="fcard__icon">🏭</div>
+                    <h3>Multi-Warehouse</h3>
+                    <p>Manage unlimited locations from one unified dashboard with full cross-location visibility.</p>
+                </div>
+                <div class="fcard reveal" style="--delay:0.08s">
+                    <div class="fcard__icon">🔗</div>
+                    <h3>150+ Integrations</h3>
+                    <p>Connect Shopify, Amazon, SAP, Oracle, and 150+ platforms with one-click connectors.</p>
+                </div>
+                <div class="fcard reveal" style="--delay:0.16s">
+                    <div class="fcard__icon">🤖</div>
+                    <h3>AI Automation</h3>
+                    <p>Automate repetitive tasks with intelligent rules engines and ML-powered workflows.</p>
+                </div>
+                <div class="fcard reveal" style="--delay:0.24s">
+                    <div class="fcard__icon">🔒</div>
+                    <h3>Enterprise Security</h3>
+                    <p>SOC2 Type II certified. Role-based access, SSO, and end-to-end AES-256 encryption.</p>
+                </div>
+                <div class="fcard reveal" style="--delay:0.32s">
+                    <div class="fcard__icon">📡</div>
+                    <h3>&lt;100ms Sync</h3>
+                    <p>Every update syncs across all devices and locations in under 100 milliseconds.</p>
+                </div>
+                <div class="fcard reveal" style="--delay:0.4s">
+                    <div class="fcard__icon">🌍</div>
+                    <h3>Global Compliance</h3>
+                    <p>Built-in support for customs, duty management, and international logistics regulations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         TRUSTED BY
+    ═══════════════════════════════════════════ -->
+    <section class="trusted">
+        <div class="container">
+            <p class="trusted__label reveal">Trusted by 500+ companies worldwide</p>
+            <div class="trusted__logos">
+                <div class="trusted-logo">Nexus Corp</div>
+                <div class="trusted-logo">SwiftLogix</div>
+                <div class="trusted-logo">GlobalStore</div>
+                <div class="trusted-logo">PrimePack</div>
+                <div class="trusted-logo">TechMart Global</div>
+                <div class="trusted-logo">OmniStock</div>
+                <div class="trusted-logo">ApexFulfill</div>
+                <div class="trusted-logo">UrbanWarehouse</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         STATS SECTION
+    ═══════════════════════════════════════════ -->
+    <section class="stats-section" id="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <div class="stat-item__number">
+                        <span class="counter" data-target="500">0</span>
+                        <span class="stat-item__suffix">+</span>
+                    </div>
+                    <div class="stat-item__label">Companies Powered</div>
+                    <div class="stat-item__sub">across 30+ countries</div>
+                </div>
+                <div class="stat-item reveal" style="--delay: 0.1s">
+                    <div class="stat-item__number">
+                        <span class="counter" data-target="10">0</span>
+                        <span class="stat-item__suffix">M+</span>
+                    </div>
+                    <div class="stat-item__label">Orders Processed</div>
+                    <div class="stat-item__sub">monthly, and counting</div>
+                </div>
+                <div class="stat-item reveal" style="--delay: 0.2s">
+                    <div class="stat-item__number">
+                        <span class="counter" data-target="99">0</span>
+                        <span class="stat-item__suffix">.9%</span>
+                    </div>
+                    <div class="stat-item__label">Uptime Guaranteed</div>
+                    <div class="stat-item__sub">enterprise-grade SLA</div>
+                </div>
+                <div class="stat-item reveal" style="--delay: 0.3s">
+                    <div class="stat-item__number">
+                        <span class="counter" data-target="40">0</span>
+                        <span class="stat-item__suffix">%</span>
+                    </div>
+                    <div class="stat-item__label">Cost Reduction</div>
+                    <div class="stat-item__sub">average across customers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         HOW IT WORKS
+    ═══════════════════════════════════════════ -->
+    <section class="how-section" id="how-it-works">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-badge">Process</div>
+                <h2 class="section-title">Up and running in<br><span class="gradient-text">under 48 hours</span></h2>
+                <p class="section-desc">Our dedicated onboarding team handles the heavy lifting so you can focus on your business.</p>
+            </div>
+            <div class="steps">
+                <div class="step reveal" style="--delay:0s">
+                    <div class="step__num">01</div>
+                    <div class="step__icon-wrap">🔌</div>
+                    <h3>Connect Your Systems</h3>
+                    <p>Integrate your ERP, e-commerce platforms, and carrier systems with our one-click connectors.</p>
+                </div>
+                <div class="step-line"></div>
+                <div class="step reveal" style="--delay:0.15s">
+                    <div class="step__num">02</div>
+                    <div class="step__icon-wrap">⚙️</div>
+                    <h3>Configure Workflows</h3>
+                    <p>Set up custom processes, zones, and automation rules with our intuitive no-code builder.</p>
+                </div>
+                <div class="step-line"></div>
+                <div class="step reveal" style="--delay:0.3s">
+                    <div class="step__num">03</div>
+                    <div class="step__icon-wrap">🚀</div>
+                    <h3>Go Live</h3>
+                    <p>Your team gets trained, data gets migrated, and you go live with full support in 48 hours.</p>
+                </div>
+                <div class="step-line"></div>
+                <div class="step reveal" style="--delay:0.45s">
+                    <div class="step__num">04</div>
+                    <div class="step__icon-wrap">📈</div>
+                    <h3>Scale Effortlessly</h3>
+                    <p>Add warehouses, users, and integrations as your business grows — FlowWMS scales with you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         DEMO / SCREENSHOTS SECTION
+         ─────────────────────────────────────────
+         HOW TO ADD YOUR REAL APP SCREENSHOTS:
+         1. Take full-browser screenshots of your app
+         2. Save them as PNG/JPG inside  images/screenshots/
+            • images/screenshots/dashboard.png
+            • images/screenshots/orders.png
+            • images/screenshots/reports.png
+         3. Update the live-app URL in the "Open Live App" button below
+         Recommended screenshot size: 1440×900px (16:9 ratio)
+    ═══════════════════════════════════════════ -->
+    <section class="demo-section" id="demo">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-badge">Platform</div>
+                <h2 class="section-title">A platform built for<br><span class="gradient-text">real warehouse teams</span></h2>
+                <p class="section-desc">Intuitive, fast, and designed to reduce clicks — not add them.</p>
+            </div>
+
+            <div class="demo-tabs-bar reveal">
+                <button class="demo-tab active"
+                        data-shot="dashboard"
+                        data-url="app.flowwms.com/dashboard">
+                    📊 Dashboard
+                </button>
+                <button class="demo-tab"
+                        data-shot="orders"
+                        data-url="app.flowwms.com/orders">
+                    📋 Order Management
+                </button>
+                <button class="demo-tab"
+                        data-shot="reports"
+                        data-url="app.flowwms.com/reports">
+                    📈 Reports & Analytics
+                </button>
+            </div>
+
+            <div class="demo-frame reveal">
+                <div class="demo-browser">
+                    <!-- Browser chrome bar -->
+                    <div class="demo-browser__bar">
+                        <div class="demo-browser__dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div class="demo-browser__url" id="demo-url-bar">
+                            🔒 app.flowwms.com/dashboard
+                        </div>
+                        <!-- ↓ Replace href with your real app URL -->
+                        <a href="https://app.flowwms.com"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="demo-open-btn">
+                            Open Live App
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+                        </a>
+                    </div>
+
+                    <!-- Screenshot switcher -->
+                    <div class="demo-shots">
+                        <!--
+                            Replace each src with your actual screenshot path.
+                            Keep the id and data-shot attributes unchanged.
+                        -->
+                        <img class="demo-shot active"
+                             id="shot-dashboard"
+                             data-shot="dashboard"
+                             src="images/screenshots/dashboard.png"
+                             alt="FlowWMS Dashboard screenshot"
+                             loading="lazy"
+                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="shot-placeholder" data-shot="dashboard">
+                            <div class="placeholder-inner">
+                                <div class="placeholder-icon">🖼️</div>
+                                <strong>Dashboard Screenshot</strong>
+                                <span>Add your screenshot at<br><code>images/screenshots/dashboard.png</code></span>
+                            </div>
+                        </div>
+
+                        <img class="demo-shot"
+                             id="shot-orders"
+                             data-shot="orders"
+                             src="images/screenshots/orders.png"
+                             alt="FlowWMS Order Management screenshot"
+                             loading="lazy"
+                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="shot-placeholder" data-shot="orders">
+                            <div class="placeholder-inner">
+                                <div class="placeholder-icon">🖼️</div>
+                                <strong>Order Management Screenshot</strong>
+                                <span>Add your screenshot at<br><code>images/screenshots/orders.png</code></span>
+                            </div>
+                        </div>
+
+                        <img class="demo-shot"
+                             id="shot-reports"
+                             data-shot="reports"
+                             src="images/screenshots/reports.png"
+                             alt="FlowWMS Reports & Analytics screenshot"
+                             loading="lazy"
+                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="shot-placeholder" data-shot="reports">
+                            <div class="placeholder-inner">
+                                <div class="placeholder-icon">🖼️</div>
+                                <strong>Reports &amp; Analytics Screenshot</strong>
+                                <span>Add your screenshot at<br><code>images/screenshots/reports.png</code></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA row below the browser frame -->
+            <div class="demo-cta-row reveal">
+                <!-- ↓ Replace href with your real app URL -->
+                <a href="https://app.flowwms.com"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn btn--primary btn--lg">
+                    Try the Live App
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#contact" class="btn btn--outline btn--lg">Book a Guided Tour</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         ABOUT / TEAM SECTION
+    ═══════════════════════════════════════════ -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-info reveal-left">
+                    <div class="section-badge">About Us</div>
+                    <h2 class="section-title">Built by warehouse experts,<br><span class="gradient-text">for warehouse experts</span></h2>
+                    <p>Founded in 2019, FlowWMS was built by a team with 50+ years of combined warehouse operations experience. We saw firsthand how outdated legacy systems were costing businesses millions — and built the platform we always wished existed.</p>
+                    <p>Today, we're a 120-person team across 4 continents, serving 500+ companies and processing over 10 million orders every single month.</p>
+                    <div class="values-grid">
+                        <div class="value"><span>🎯</span>Customer Obsessed</div>
+                        <div class="value"><span>⚡</span>Move Fast</div>
+                        <div class="value"><span>🔬</span>Data Driven</div>
+                        <div class="value"><span>🤝</span>Team First</div>
+                    </div>
+                </div>
+                <div class="team-grid reveal-right">
+                    <div class="team-card">
+                        <div class="team-card__photo" style="background:linear-gradient(135deg,#6C63FF,#9D96FF)">AJ</div>
+                        <div class="team-card__name">Alex Johnson</div>
+                        <div class="team-card__role">CEO & Co-Founder</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-card__photo" style="background:linear-gradient(135deg,#00D4AA,#00A887)">PL</div>
+                        <div class="team-card__name">Priya Lakshmanan</div>
+                        <div class="team-card__role">CTO & Co-Founder</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-card__photo" style="background:linear-gradient(135deg,#FF6B6B,#FF9E53)">MC</div>
+                        <div class="team-card__name">Marcus Chen</div>
+                        <div class="team-card__role">Head of Product</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-card__photo" style="background:linear-gradient(135deg,#845EF7,#5C7CFA)">LB</div>
+                        <div class="team-card__name">Laura Brennan</div>
+                        <div class="team-card__role">VP of Sales</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PRICING SECTION
+    ═══════════════════════════════════════════ -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-badge">Pricing</div>
+                <h2 class="section-title">Simple, transparent<br><span class="gradient-text">pricing</span></h2>
+                <p class="section-desc">Start free. Scale as you grow. No hidden fees, ever.</p>
+            </div>
+            <div class="billing-toggle reveal">
+                <span class="billing-label">Monthly</span>
+                <label class="toggle">
+                    <input type="checkbox" id="billing-toggle">
+                    <span class="toggle-slider"></span>
+                </label>
+                <span class="billing-label">Annual <em class="save-tag">Save 20%</em></span>
+            </div>
+            <div class="pricing-grid reveal">
+                <div class="plan-card">
+                    <div class="plan-card__name">Starter</div>
+                    <div class="plan-card__price">
+                        <span class="currency">$</span>
+                        <span class="price" data-monthly="49" data-annual="39">49</span>
+                        <span class="per">/mo</span>
+                    </div>
+                    <p class="plan-card__desc">Perfect for small teams getting started with WMS.</p>
+                    <ul class="plan-features">
+                        <li class="feat--on">Up to 5,000 SKUs</li>
+                        <li class="feat--on">1 Warehouse location</li>
+                        <li class="feat--on">500 orders / month</li>
+                        <li class="feat--on">Mobile app access</li>
+                        <li class="feat--on">Email support</li>
+                        <li class="feat--off">AI Forecasting</li>
+                        <li class="feat--off">Custom Integrations</li>
+                    </ul>
+                    <a href="#contact" class="btn btn--outline plan-btn">Get Started Free</a>
+                </div>
+
+                <div class="plan-card plan-card--featured">
+                    <div class="plan-card__popular">Most Popular</div>
+                    <div class="plan-card__name">Growth</div>
+                    <div class="plan-card__price">
+                        <span class="currency">$</span>
+                        <span class="price" data-monthly="149" data-annual="119">149</span>
+                        <span class="per">/mo</span>
+                    </div>
+                    <p class="plan-card__desc">For growing operations that need power and flexibility.</p>
+                    <ul class="plan-features">
+                        <li class="feat--on">Unlimited SKUs</li>
+                        <li class="feat--on">Up to 5 warehouse locations</li>
+                        <li class="feat--on">Unlimited orders</li>
+                        <li class="feat--on">AI Forecasting & Analytics</li>
+                        <li class="feat--on">50+ Integrations</li>
+                        <li class="feat--on">24/7 priority support</li>
+                        <li class="feat--on">Custom reporting</li>
+                    </ul>
+                    <a href="#contact" class="btn btn--primary plan-btn">Start Free Trial</a>
+                </div>
+
+                <div class="plan-card">
+                    <div class="plan-card__name">Enterprise</div>
+                    <div class="plan-card__price">
+                        <span class="price" style="font-size:2.2rem;letter-spacing:-1px">Custom</span>
+                    </div>
+                    <p class="plan-card__desc">Tailored solutions for large-scale global operations.</p>
+                    <ul class="plan-features">
+                        <li class="feat--on">Unlimited everything</li>
+                        <li class="feat--on">Unlimited global warehouses</li>
+                        <li class="feat--on">Custom AI models</li>
+                        <li class="feat--on">Dedicated infrastructure</li>
+                        <li class="feat--on">150+ Integrations</li>
+                        <li class="feat--on">Dedicated account manager</li>
+                        <li class="feat--on">99.99% SLA guarantee</li>
+                    </ul>
+                    <a href="#contact" class="btn btn--outline plan-btn">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         TESTIMONIALS
+    ═══════════════════════════════════════════ -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-badge">Testimonials</div>
+                <h2 class="section-title">Loved by warehouse<br><span class="gradient-text">teams worldwide</span></h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="tcard reveal" style="--delay:0s">
+                    <div class="tcard__stars">★★★★★</div>
+                    <p class="tcard__quote">"FlowWMS cut our picking errors by 94% in the first month alone. The ROI was immediate and the entire team loves the mobile app."</p>
+                    <div class="tcard__author">
+                        <div class="tcard__avatar" style="background: linear-gradient(135deg, #6C63FF, #9D96FF)">SM</div>
+                        <div>
+                            <div class="tcard__name">Sarah Mitchell</div>
+                            <div class="tcard__role">VP Operations, Nexus Corp</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tcard tcard--featured reveal" style="--delay:0.1s">
+                    <div class="tcard__stars">★★★★★</div>
+                    <p class="tcard__quote">"We scaled from 2 to 11 warehouses in just 8 months without hiring a single extra logistics manager. FlowWMS made that possible."</p>
+                    <div class="tcard__author">
+                        <div class="tcard__avatar" style="background: linear-gradient(135deg, #00D4AA, #00B891)">JR</div>
+                        <div>
+                            <div class="tcard__name">James Rodriguez</div>
+                            <div class="tcard__role">CEO, SwiftLogix</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tcard reveal" style="--delay:0.2s">
+                    <div class="tcard__stars">★★★★★</div>
+                    <p class="tcard__quote">"The AI forecasting alone saved us over $200K in overstock costs last year. Absolutely worth every penny — and then some."</p>
+                    <div class="tcard__author">
+                        <div class="tcard__avatar" style="background: linear-gradient(135deg, #FF6B6B, #FF8E53)">AK</div>
+                        <div>
+                            <div class="tcard__name">Anika Kumar</div>
+                            <div class="tcard__role">Supply Chain Director, TechMart</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         FAQ SECTION
+    ═══════════════════════════════════════════ -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-badge">FAQ</div>
+                <h2 class="section-title">Frequently asked<br><span class="gradient-text">questions</span></h2>
+            </div>
+            <div class="faq-list reveal">
+                <div class="faq-item">
+                    <button class="faq-q">
+                        How long does implementation take?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>Most customers are fully operational within 48 hours. Our dedicated onboarding team handles data migration, integrations, and staff training to ensure a seamless transition from day one.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">
+                        Can FlowWMS integrate with my existing systems?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>Yes! FlowWMS connects with 150+ platforms including Shopify, WooCommerce, Amazon, SAP, Oracle, QuickBooks, and all major shipping carriers. Custom API integrations are available on Growth and Enterprise plans.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">
+                        Is my data secure with FlowWMS?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>Absolutely. FlowWMS is SOC2 Type II certified and GDPR compliant. All data is encrypted at rest and in transit using AES-256 encryption. We maintain 99.9% uptime with automatic failover and daily geo-redundant backups.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">
+                        Do you offer a free trial?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>Yes! We offer a 14-day free trial with full access to all Growth plan features — no credit card required. You can also book a personalized 30-minute demo with our team at any time.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">
+                        What kind of support do you provide?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>Starter plans include email support with 24-hour response times. Growth plans include 24/7 priority support via live chat and phone. Enterprise customers receive a dedicated account manager and contractual SLA-backed response times.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">
+                        Can I manage multiple warehouse locations?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>Yes! Growth plans support up to 5 warehouse locations. Enterprise plans offer unlimited warehouses globally, complete with cross-location inventory visibility, transfer management, and consolidated reporting.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">
+                        Can I cancel or change plans anytime?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>Absolutely. You can upgrade, downgrade, or cancel your subscription at any time from your account settings. We believe in earning your business every month — no lock-in contracts on Starter and Growth plans.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">
+                        Does FlowWMS support barcode and RFID scanning?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>Yes. FlowWMS natively supports 1D/2D barcodes, QR codes, and RFID (UHF Gen2 compliant). Our mobile app doubles as a scanner, or you can connect any USB/Bluetooth scanner directly. Honeywell, Zebra, and Datalogic devices are certified compatible.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         CONTACT SECTION
+    ═══════════════════════════════════════════ -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info reveal-left">
+                    <div class="section-badge">Contact</div>
+                    <h2 class="section-title">Ready to transform<br><span class="gradient-text">your operations?</span></h2>
+                    <p>Talk to our team. We'll help you find the right plan and get you started within 48 hours — guaranteed.</p>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-item__icon">📧</div>
+                            <div>
+                                <div class="contact-item__lbl">Email us</div>
+                                <div class="contact-item__val">hello@flowwms.com</div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item__icon">📞</div>
+                            <div>
+                                <div class="contact-item__lbl">Call us</div>
+                                <div class="contact-item__val">+1 (800) 123-4567</div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item__icon">📍</div>
+                            <div>
+                                <div class="contact-item__lbl">Headquarters</div>
+                                <div class="contact-item__val">San Francisco, CA · USA</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-box reveal-right">
+                    <form class="contact-form" id="contact-form" novalidate>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="firstName" placeholder="John" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" placeholder="Doe" required>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label for="email">Work Email</label>
+                            <input type="email" id="email" name="email" placeholder="john@company.com" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" name="company" placeholder="Your Company" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="interest">I'm interested in</label>
+                            <select id="interest" name="interest">
+                                <option value="">Select an option…</option>
+                                <option value="starter">Starter Plan — $49/mo</option>
+                                <option value="growth">Growth Plan — $149/mo</option>
+                                <option value="enterprise">Enterprise — Custom Pricing</option>
+                                <option value="demo">Just a Demo First</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="message">Message (optional)</label>
+                            <textarea id="message" name="message" rows="3" placeholder="Tell us about your warehouse setup…"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full btn--lg">
+                            Send Message
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                        </button>
+                        <div class="form-success" id="form-success">
+                            ✅ Thanks! We'll be in touch within 1 business day.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         CTA BANNER
+    ═══════════════════════════════════════════ -->
+    <section class="cta-banner">
+        <div class="cta-banner__bg">
+            <div class="cta-blob-1"></div>
+            <div class="cta-blob-2"></div>
+        </div>
+        <div class="container cta-banner__content reveal">
+            <h2>Start your 14-day free trial today</h2>
+            <p>No credit card required. Full Growth plan access. Cancel anytime.</p>
+            <div class="cta-banner__actions">
+                <a href="#contact" class="btn btn--white btn--lg">Get Started Free</a>
+                <a href="#demo" class="btn btn--outline-white btn--lg">Book a Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════════ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="#" class="footer__logo">
+                        <span class="logo-hex">⬡</span>Flow<span>WMS</span>
+                    </a>
+                    <p>The AI-powered WMS platform for modern, high-performance warehouse operations.</p>
+                    <div class="footer__social">
+                        <a href="#" class="social-btn" aria-label="Twitter/X">𝕏</a>
+                        <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+                        <a href="#" class="social-btn" aria-label="GitHub">⑇</a>
+                    </div>
+                </div>
+                <div class="footer__col">
+                    <h4>Product</h4>
+                    <a href="#features">Features</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#demo">Live Demo</a>
+                    <a href="#">Changelog</a>
+                </div>
+                <div class="footer__col">
+                    <h4>Company</h4>
+                    <a href="#about">About Us</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Press Kit</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer__col">
+                    <h4>Resources</h4>
+                    <a href="#">Documentation</a>
+                    <a href="#">API Reference</a>
+                    <a href="#">System Status</a>
+                    <a href="#">Community</a>
+                    <a href="#">Webinars</a>
+                </div>
+                <div class="footer__col">
+                    <h4>Legal</h4>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                    <a href="#">Security</a>
+                    <a href="#">GDPR</a>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>© 2026 FlowWMS, Inc. All rights reserved.</p>
+                <div class="footer__certs">
+                    <span>SOC2 Certified</span>
+                    <span>GDPR Compliant</span>
+                    <span>99.9% Uptime</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
