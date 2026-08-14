@@ -231,33 +231,36 @@ function initCounters() {
 })();
 
 
-/* ── Demo Tabs — switches between real app screenshots ────── */
-(function initDemoTabs() {
-    const tabs        = document.querySelectorAll('.demo-tab');
-    const urlBar      = document.getElementById('demo-url-bar');
+/* ── Interactive Prototype (NordWMS demo — iframe) ─────────── */
+(function initProto() {
+    const iframe   = document.querySelector('.proto-iframe');
+    const fallback = document.getElementById('proto-iframe-fallback');
+    if (!iframe || !fallback) return;
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            if (tab.classList.contains('active')) return;
+    // Show fallback if iframe fails to load (app not running locally)
+    iframe.addEventListener('error', () => fallback.classList.add('visible'));
 
-            const shot = tab.dataset.shot;
-            const url  = tab.dataset.url || '';
-
-            // Swap active tab
-            tabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-
-            // Swap active screenshot image
-            document.querySelectorAll('.demo-shot').forEach(img => {
-                img.classList.toggle('active', img.dataset.shot === shot);
-            });
-
-            // Placeholders are shown only via onerror — no class toggling needed
-
-            // Update URL bar
-            if (urlBar && url) urlBar.textContent = '🔒 ' + url;
-        });
+    // Heuristic: if load fires but content is inaccessible, show fallback after brief delay
+    iframe.addEventListener('load', () => {
+        try {
+            // Cross-origin access throws — means app loaded fine, hide fallback
+            void iframe.contentWindow.location.href;
+        } catch (_) {
+            // Cross-origin means it loaded; do nothing
+        }
     });
+
+    // Timeout fallback: if still blank after 4s, assume app isn't running
+    setTimeout(() => {
+        try {
+            const doc = iframe.contentDocument || iframe.contentWindow?.document;
+            if (!doc || doc.body === null || doc.body.innerHTML.trim() === '') {
+                fallback.classList.add('visible');
+            }
+        } catch (_) {
+            // Cross-origin = loaded fine
+        }
+    }, 4000);
 })();
 
 

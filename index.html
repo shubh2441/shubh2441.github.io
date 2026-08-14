@@ -371,6 +371,317 @@
         </div>
     </section>
 
+        <section class="demo-section" id="demo">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-badge">Platform</div>
+                <h2 class="section-title">See NordWMS in<br><span class="gradient-text">action — live</span></h2>
+                <p class="section-desc">Click through the dashboard, browse orders, and explore SLA reports — no login needed.</p>
+            </div>
+
+            <div class="proto-frame reveal">
+                <div class="demo-browser">
+                    <div class="demo-browser__bar">
+                        <div class="demo-browser__dots"><span></span><span></span><span></span></div>
+                        <div class="demo-browser__url" id="proto-url-bar">🔒 localhost:4300/wms-app-ui#/index/dashboard/demo</div>
+                    </div>
+                    <!-- Update src to your public URL when deployed -->
+                    <div class="proto-app proto-app--iframe">
+                        <iframe
+                            src="http://localhost:4300/wms-app-ui#/index/dashboard/demo"
+                            class="proto-iframe"
+                            title="NordWMS Dashboard Demo"
+                            frameborder="0"
+                            loading="lazy"
+                            allow="clipboard-write"
+                        ></iframe>
+                        <div class="proto-iframe-fallback" id="proto-iframe-fallback">
+                            <div class="proto-iframe-fallback__inner">
+                                <div class="proto-iframe-fallback__icon">🔌</div>
+                                <strong>App not running</strong>
+                                <span>Start NordWMS locally at <code>localhost:4300</code> to see the live demo here.</span>
+                            </div>
+                        </div>
+                        <aside class="proto-sidebar" style="display:none">
+                            <div class="proto-logo-bar">
+                                <div class="proto-logo-mark">
+                                    <span class="proto-logo-nw">NW</span>
+                                    <span class="proto-logo-text">NORD<br>WMS</span>
+                                </div>
+                                <button class="proto-collapse-btn" id="proto-collapse-btn" title="Collapse">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+                                </button>
+                            </div>
+                            <nav class="proto-nav">
+                                <button class="proto-nav-item active" data-proto-page="dashboard" data-proto-url="app.nordwms.com/dashboard">
+                                    <svg class="proto-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                                    <span>Dashboard</span>
+                                    <svg class="proto-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                                </button>
+                                <button class="proto-nav-item" data-proto-page="orders" data-proto-url="app.nordwms.com/outbound">
+                                    <svg class="proto-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    <span>Outbound</span>
+                                    <svg class="proto-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                                </button>
+                                <button class="proto-nav-item" data-proto-page="reports" data-proto-url="app.nordwms.com/inbound">
+                                    <svg class="proto-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                                    <span>Inbound</span>
+                                    <svg class="proto-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                                </button>
+                                <button class="proto-nav-item" data-proto-page="inventory" data-proto-url="app.nordwms.com/inventory">
+                                    <svg class="proto-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+                                    <span>Inventory</span>
+                                    <svg class="proto-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                                </button>
+                            </nav>
+                        </aside>
+
+                        <main class="proto-content" style="display:none">
+                            <!-- Dashboard page -->
+                            <div class="proto-page active" id="proto-page-dashboard">
+                                <div class="proto-topbar">
+                                    <div>
+                                        <div class="proto-page-title">Dashboard</div>
+                                        <div class="proto-subtitle">Aug 14, 2026</div>
+                                    </div>
+                                </div>
+                                <div class="proto-kpis">
+                                    <div class="proto-kpi">
+                                        <div class="proto-kpi__icon" style="background:#EEF2FF;color:#6C63FF">📦</div>
+                                        <div class="proto-kpi__num">1,284</div>
+                                        <div class="proto-kpi__label">Orders Created</div>
+                                        <div class="proto-kpi__delta proto-kpi__delta--up">▲ 12% vs last week</div>
+                                    </div>
+                                    <div class="proto-kpi">
+                                        <div class="proto-kpi__icon" style="background:#ECFDF5;color:#10B981">🚚</div>
+                                        <div class="proto-kpi__num">1,102</div>
+                                        <div class="proto-kpi__label">Orders Shipped</div>
+                                        <div class="proto-kpi__delta proto-kpi__delta--up">▲ 8% vs last week</div>
+                                    </div>
+                                    <div class="proto-kpi">
+                                        <div class="proto-kpi__icon" style="background:#F5F3FF;color:#8B5CF6">🏷️</div>
+                                        <div class="proto-kpi__num">3,456</div>
+                                        <div class="proto-kpi__label">SKUs Active</div>
+                                        <div class="proto-kpi__delta proto-kpi__delta--up">▲ 34 new this week</div>
+                                    </div>
+                                    <div class="proto-kpi">
+                                        <div class="proto-kpi__icon" style="background:#FFFBEB;color:#F59E0B">✅</div>
+                                        <div class="proto-kpi__num">94.2%</div>
+                                        <div class="proto-kpi__label">SLA Compliance</div>
+                                        <div class="proto-kpi__delta proto-kpi__delta--down">▼ 0.8% below target</div>
+                                    </div>
+                                </div>
+                                <div class="proto-charts-row">
+                                    <div class="proto-card">
+                                        <div class="proto-card-title">Order Status</div>
+                                        <div class="proto-pie-wrap">
+                                            <div class="proto-pie" style="background:conic-gradient(#6C63FF 0% 72%,#00D4AA 72% 90%,#FFAA2E 90% 100%)"></div>
+                                            <div class="proto-pie-legend">
+                                                <div class="proto-legend-item"><span class="proto-dot" style="background:#6C63FF"></span>Shipped <strong>72%</strong></div>
+                                                <div class="proto-legend-item"><span class="proto-dot" style="background:#00D4AA"></span>Processing <strong>18%</strong></div>
+                                                <div class="proto-legend-item"><span class="proto-dot" style="background:#FFAA2E"></span>Pending <strong>10%</strong></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="proto-card">
+                                        <div class="proto-card-title">SLA — Last 7 Days</div>
+                                        <div class="proto-barchart">
+                                            <div class="proto-bar-group"><div class="proto-bar-fill" style="height:88%"></div><span>Mon</span></div>
+                                            <div class="proto-bar-group"><div class="proto-bar-fill" style="height:95%"></div><span>Tue</span></div>
+                                            <div class="proto-bar-group"><div class="proto-bar-fill" style="height:91%"></div><span>Wed</span></div>
+                                            <div class="proto-bar-group"><div class="proto-bar-fill" style="height:97%"></div><span>Thu</span></div>
+                                            <div class="proto-bar-group"><div class="proto-bar-fill proto-bar-fill--warn" style="height:79%"></div><span>Fri</span></div>
+                                            <div class="proto-bar-group"><div class="proto-bar-fill" style="height:93%"></div><span>Sat</span></div>
+                                            <div class="proto-bar-group"><div class="proto-bar-fill" style="height:96%"></div><span>Sun</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="proto-card">
+                                    <div class="proto-card-title">Recent Orders</div>
+                                    <table class="proto-table">
+                                        <thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Status</th><th>SLA</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>#NW-10482</td><td>Acme Corp</td><td>14</td><td><span class="proto-badge proto-badge--green">Shipped</span></td><td><span class="proto-sla proto-sla--ok">✔ On Time</span></td></tr>
+                                            <tr><td>#NW-10481</td><td>BlueStream Ltd</td><td>3</td><td><span class="proto-badge proto-badge--blue">Processing</span></td><td><span class="proto-sla proto-sla--ok">✔ On Time</span></td></tr>
+                                            <tr><td>#NW-10480</td><td>Global Nest</td><td>27</td><td><span class="proto-badge proto-badge--green">Shipped</span></td><td><span class="proto-sla proto-sla--warn">⚠ At Risk</span></td></tr>
+                                            <tr><td>#NW-10479</td><td>PrimePack Ltd</td><td>8</td><td><span class="proto-badge proto-badge--yellow">Pending</span></td><td><span class="proto-sla proto-sla--ok">✔ On Time</span></td></tr>
+                                            <tr><td>#NW-10478</td><td>TechMart EU</td><td>52</td><td><span class="proto-badge proto-badge--green">Shipped</span></td><td><span class="proto-sla proto-sla--ok">✔ On Time</span></td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- Orders page -->
+                            <div class="proto-page" id="proto-page-orders">
+                                <div class="proto-topbar">
+                                    <div>
+                                        <div class="proto-page-title">Orders</div>
+                                        <div class="proto-subtitle">1,284 total this period</div>
+                                    </div>
+                                    <button class="proto-action-btn" id="proto-new-order-btn">+ New Order</button>
+                                </div>
+                                <div class="proto-toolbar">
+                                    <input class="proto-search" id="proto-order-search" type="text" placeholder="🔍  Search by order ID or customer…" />
+                                    <select class="proto-select" id="proto-status-filter">
+                                        <option value="">All Status</option>
+                                        <option value="Shipped">Shipped</option>
+                                        <option value="Processing">Processing</option>
+                                        <option value="Pending">Pending</option>
+                                    </select>
+                                </div>
+                                <div class="proto-card">
+                                    <table class="proto-table">
+                                        <thead><tr><th>Order ID</th><th>Customer</th><th>SKUs</th><th>Total</th><th>Status</th><th>Created</th><th>SLA</th></tr></thead>
+                                        <tbody id="proto-orders-tbody">
+                                            <tr data-status="Shipped"><td>#NW-10482</td><td>Acme Corp</td><td>14</td><td>$2,340</td><td><span class="proto-badge proto-badge--green">Shipped</span></td><td>Aug 14</td><td><span class="proto-sla proto-sla--ok">✔ On Time</span></td></tr>
+                                            <tr data-status="Processing"><td>#NW-10481</td><td>BlueStream Ltd</td><td>3</td><td>$480</td><td><span class="proto-badge proto-badge--blue">Processing</span></td><td>Aug 14</td><td><span class="proto-sla proto-sla--ok">✔ On Time</span></td></tr>
+                                            <tr data-status="Shipped"><td>#NW-10480</td><td>Global Nest</td><td>27</td><td>$6,120</td><td><span class="proto-badge proto-badge--green">Shipped</span></td><td>Aug 13</td><td><span class="proto-sla proto-sla--warn">⚠ At Risk</span></td></tr>
+                                            <tr data-status="Pending"><td>#NW-10479</td><td>PrimePack Ltd</td><td>8</td><td>$990</td><td><span class="proto-badge proto-badge--yellow">Pending</span></td><td>Aug 13</td><td><span class="proto-sla proto-sla--ok">✔ On Time</span></td></tr>
+                                            <tr data-status="Shipped"><td>#NW-10478</td><td>TechMart EU</td><td>52</td><td>$14,200</td><td><span class="proto-badge proto-badge--green">Shipped</span></td><td>Aug 12</td><td><span class="proto-sla proto-sla--ok">✔ On Time</span></td></tr>
+                                            <tr data-status="Processing"><td>#NW-10477</td><td>NexusCorp</td><td>9</td><td>$1,105</td><td><span class="proto-badge proto-badge--blue">Processing</span></td><td>Aug 12</td><td><span class="proto-sla proto-sla--ok">✔ On Time</span></td></tr>
+                                            <tr data-status="Shipped"><td>#NW-10476</td><td>SwiftLogix</td><td>21</td><td>$3,780</td><td><span class="proto-badge proto-badge--green">Shipped</span></td><td>Aug 11</td><td><span class="proto-sla proto-sla--ok">✔ On Time</span></td></tr>
+                                            <tr data-status="Pending"><td>#NW-10475</td><td>OmniStock</td><td>6</td><td>$720</td><td><span class="proto-badge proto-badge--yellow">Pending</span></td><td>Aug 11</td><td><span class="proto-sla proto-sla--ok">✔ On Time</span></td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="proto-modal" id="proto-new-order-modal">
+                                    <div class="proto-modal-box">
+                                        <div class="proto-modal-header">
+                                            <span>Create New Order</span>
+                                            <button class="proto-modal-close" id="proto-modal-close">✕</button>
+                                        </div>
+                                        <div class="proto-modal-body">
+                                            <label>Customer</label>
+                                            <input type="text" class="proto-input" placeholder="Customer name…" />
+                                            <label>Warehouse</label>
+                                            <select class="proto-select"><option>Warehouse A — London</option><option>Warehouse B — Berlin</option><option>Warehouse C — Dubai</option></select>
+                                            <label>SKUs</label>
+                                            <input type="number" class="proto-input" placeholder="Number of SKUs…" min="1" />
+                                            <label>Priority</label>
+                                            <select class="proto-select"><option>Standard</option><option>Express</option><option>Same Day</option></select>
+                                        </div>
+                                        <div class="proto-modal-footer">
+                                            <button class="proto-action-btn proto-action-btn--ghost" id="proto-modal-cancel">Cancel</button>
+                                            <button class="proto-action-btn" id="proto-modal-submit">Create Order</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Inventory page -->
+                            <div class="proto-page" id="proto-page-inventory">
+                                <div class="proto-topbar">
+                                    <div>
+                                        <div class="proto-page-title">Inventory</div>
+                                        <div class="proto-subtitle">3,456 active SKUs</div>
+                                    </div>
+                                </div>
+                                <div class="proto-kpis proto-kpis--3">
+                                    <div class="proto-kpi">
+                                        <div class="proto-kpi__icon" style="background:#EEF2FF;color:#6C63FF">📦</div>
+                                        <div class="proto-kpi__num">3,456</div>
+                                        <div class="proto-kpi__label">Active SKUs</div>
+                                        <div class="proto-kpi__delta proto-kpi__delta--up">▲ 34 added this week</div>
+                                    </div>
+                                    <div class="proto-kpi">
+                                        <div class="proto-kpi__icon" style="background:#FEF2F2;color:#EF4444">⚠️</div>
+                                        <div class="proto-kpi__num">18</div>
+                                        <div class="proto-kpi__label">Low Stock Alerts</div>
+                                        <div class="proto-kpi__delta proto-kpi__delta--down">Action needed</div>
+                                    </div>
+                                    <div class="proto-kpi">
+                                        <div class="proto-kpi__icon" style="background:#ECFDF5;color:#10B981">🏭</div>
+                                        <div class="proto-kpi__num">3</div>
+                                        <div class="proto-kpi__label">Warehouses</div>
+                                        <div class="proto-kpi__delta proto-kpi__delta--up">All operational</div>
+                                    </div>
+                                </div>
+                                <div class="proto-card">
+                                    <div class="proto-card-title">SKU Stock Levels</div>
+                                    <table class="proto-table">
+                                        <thead><tr><th>SKU</th><th>Product</th><th>Stock</th><th>Reorder Point</th><th>Status</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>SKU-4821</td><td>Widget Pro Max</td><td>1,240</td><td>200</td><td><span class="proto-badge proto-badge--green">Healthy</span></td></tr>
+                                            <tr><td>SKU-4820</td><td>Cable USB-C 2m</td><td>43</td><td>100</td><td><span class="proto-badge proto-badge--red">Low Stock</span></td></tr>
+                                            <tr><td>SKU-4819</td><td>Adapter Kit v2</td><td>388</td><td>150</td><td><span class="proto-badge proto-badge--green">Healthy</span></td></tr>
+                                            <tr><td>SKU-4818</td><td>Box L — Brown</td><td>2,100</td><td>500</td><td><span class="proto-badge proto-badge--green">Healthy</span></td></tr>
+                                            <tr><td>SKU-4817</td><td>Foam Insert 30cm</td><td>82</td><td>200</td><td><span class="proto-badge proto-badge--yellow">At Risk</span></td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- Reports page -->
+                            <div class="proto-page" id="proto-page-reports">
+                                <div class="proto-topbar">
+                                    <div>
+                                        <div class="proto-page-title">SLA Report</div>
+                                        <div class="proto-subtitle">Last 30 days</div>
+                                    </div>
+                                    <select class="proto-select" style="width:auto">
+                                        <option>Last 30 Days</option>
+                                        <option>Last 7 Days</option>
+                                        <option>This Month</option>
+                                    </select>
+                                </div>
+                                <div class="proto-kpis proto-kpis--3">
+                                    <div class="proto-kpi">
+                                        <div class="proto-kpi__icon" style="background:#ECFDF5;color:#10B981">✅</div>
+                                        <div class="proto-kpi__num">94.2%</div>
+                                        <div class="proto-kpi__label">Overall SLA</div>
+                                        <div class="proto-kpi__delta proto-kpi__delta--down">Target: 95%</div>
+                                    </div>
+                                    <div class="proto-kpi">
+                                        <div class="proto-kpi__icon" style="background:#EEF2FF;color:#6C63FF">📦</div>
+                                        <div class="proto-kpi__num">1,209</div>
+                                        <div class="proto-kpi__label">Orders On Time</div>
+                                        <div class="proto-kpi__delta proto-kpi__delta--up">of 1,284 total</div>
+                                    </div>
+                                    <div class="proto-kpi">
+                                        <div class="proto-kpi__icon" style="background:#FFFBEB;color:#F59E0B">⚠️</div>
+                                        <div class="proto-kpi__num">75</div>
+                                        <div class="proto-kpi__label">SLA Breaches</div>
+                                        <div class="proto-kpi__delta proto-kpi__delta--down">▼ 23 vs prev period</div>
+                                    </div>
+                                </div>
+                                <div class="proto-card">
+                                    <div class="proto-card-title">Daily SLA % — Last 14 Days</div>
+                                    <div class="proto-barchart proto-barchart--lg">
+                                        <div class="proto-bar-group"><div class="proto-bar-fill" style="height:92%"></div><span>1</span></div>
+                                        <div class="proto-bar-group"><div class="proto-bar-fill" style="height:96%"></div><span>2</span></div>
+                                        <div class="proto-bar-group"><div class="proto-bar-fill proto-bar-fill--warn" style="height:81%"></div><span>3</span></div>
+                                        <div class="proto-bar-group"><div class="proto-bar-fill" style="height:94%"></div><span>4</span></div>
+                                        <div class="proto-bar-group"><div class="proto-bar-fill" style="height:97%"></div><span>5</span></div>
+                                        <div class="proto-bar-group"><div class="proto-bar-fill" style="height:95%"></div><span>6</span></div>
+                                        <div class="proto-bar-group"><div class="proto-bar-fill proto-bar-fill--warn" style="height:78%"></div><span>7</span></div>
+                                        <div class="proto-bar-group"><div class="proto-bar-fill" style="height:88%"></div><span>8</span></div>
+                                        <div class="proto-bar-group"><div class="proto-bar-fill" style="height:95%"></div><span>9</span></div>
+                                        <div class="proto-bar-group"><div class="proto-bar-fill" style="height:91%"></div><span>10</span></div>
+                                        <div class="proto-bar-group"><div class="proto-bar-fill" style="height:97%"></div><span>11</span></div>
+                                        <div class="proto-bar-group"><div class="proto-bar-fill proto-bar-fill--warn" style="height:79%"></div><span>12</span></div>
+                                        <div class="proto-bar-group"><div class="proto-bar-fill" style="height:93%"></div><span>13</span></div>
+                                        <div class="proto-bar-group"><div class="proto-bar-fill" style="height:96%"></div><span>14</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="proto-toast" id="proto-toast"></div>
+                        </main>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-cta-row reveal">
+                <a href="#contact" class="btn btn--primary btn--lg">
+                    Book a Guided Tour
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#contact" class="btn btn--outline btn--lg">Get Full Access</a>
+            </div>
+        </div>
+    </section>
+
+
     <!-- Feature Cards -->
     <section class="feature-cards-section">
         <div class="container">
@@ -410,48 +721,6 @@
     </section>
 
     <!-- ═══════════════════════════════════════════
-         STATS SECTION
-    ═══════════════════════════════════════════ -->
-    <section class="stats-section" id="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item reveal">
-                    <div class="stat-item__number">
-                        <span class="counter" data-target="500">0</span>
-                        <span class="stat-item__suffix">+</span>
-                    </div>
-                    <div class="stat-item__label">Companies Powered</div>
-                    <div class="stat-item__sub">across 30+ countries</div>
-                </div>
-                <div class="stat-item reveal" style="--delay: 0.1s">
-                    <div class="stat-item__number">
-                        <span class="counter" data-target="10">0</span>
-                        <span class="stat-item__suffix">M+</span>
-                    </div>
-                    <div class="stat-item__label">Orders Processed</div>
-                    <div class="stat-item__sub">monthly, and counting</div>
-                </div>
-                <div class="stat-item reveal" style="--delay: 0.2s">
-                    <div class="stat-item__number">
-                        <span class="counter" data-target="99">0</span>
-                        <span class="stat-item__suffix">.9%</span>
-                    </div>
-                    <div class="stat-item__label">Uptime Guaranteed</div>
-                    <div class="stat-item__sub">enterprise-grade SLA</div>
-                </div>
-                <div class="stat-item reveal" style="--delay: 0.3s">
-                    <div class="stat-item__number">
-                        <span class="counter" data-target="40">0</span>
-                        <span class="stat-item__suffix">%</span>
-                    </div>
-                    <div class="stat-item__label">Cost Reduction</div>
-                    <div class="stat-item__sub">average across customers</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
          DEMO / SCREENSHOTS SECTION
          ─────────────────────────────────────────
          HOW TO ADD YOUR REAL APP SCREENSHOTS:
@@ -463,120 +732,6 @@
          3. Update the live-app URL in the "Open Live App" button below
          Recommended screenshot size: 1440×900px (16:9 ratio)
     ═══════════════════════════════════════════ -->
-    <section class="demo-section" id="demo">
-        <div class="container">
-            <div class="section-header reveal">
-                <div class="section-badge">Platform</div>
-                <h2 class="section-title">A platform built for<br><span class="gradient-text">real warehouse teams</span></h2>
-                <p class="section-desc">Intuitive, fast, and designed to reduce clicks — not add them.</p>
-            </div>
-
-            <div class="demo-tabs-bar reveal">
-                <button class="demo-tab active"
-                        data-shot="dashboard"
-                        data-url="app.flowwms.com/dashboard">
-                    📊 Dashboard
-                </button>
-                <button class="demo-tab"
-                        data-shot="orders"
-                        data-url="app.flowwms.com/orders">
-                    📋 Order Management
-                </button>
-                <button class="demo-tab"
-                        data-shot="reports"
-                        data-url="app.flowwms.com/reports">
-                    📈 Reports & Analytics
-                </button>
-            </div>
-
-            <div class="demo-frame reveal">
-                <div class="demo-browser">
-                    <!-- Browser chrome bar -->
-                    <div class="demo-browser__bar">
-                        <div class="demo-browser__dots">
-                            <span></span><span></span><span></span>
-                        </div>
-                        <div class="demo-browser__url" id="demo-url-bar">
-                            🔒 app.flowwms.com/dashboard
-                        </div>
-                        <!-- ↓ Replace href with your real app URL -->
-                        <a href="https://app.flowwms.com"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="demo-open-btn">
-                            Open Live App
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
-                        </a>
-                    </div>
-
-                    <!-- Screenshot switcher -->
-                    <div class="demo-shots">
-                        <!--
-                            Replace each src with your actual screenshot path.
-                            Keep the id and data-shot attributes unchanged.
-                        -->
-                        <img class="demo-shot active"
-                             id="shot-dashboard"
-                             data-shot="dashboard"
-                             src="images/screenshots/dashboard.png"
-                             alt="FlowWMS Dashboard screenshot"
-                             loading="lazy"
-                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                        <div class="shot-placeholder" data-shot="dashboard">
-                            <div class="placeholder-inner">
-                                <div class="placeholder-icon">🖼️</div>
-                                <strong>Dashboard Screenshot</strong>
-                                <span>Add your screenshot at<br><code>images/screenshots/dashboard.png</code></span>
-                            </div>
-                        </div>
-
-                        <img class="demo-shot"
-                             id="shot-orders"
-                             data-shot="orders"
-                             src="images/screenshots/orders.png"
-                             alt="FlowWMS Order Management screenshot"
-                             loading="lazy"
-                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                        <div class="shot-placeholder" data-shot="orders">
-                            <div class="placeholder-inner">
-                                <div class="placeholder-icon">🖼️</div>
-                                <strong>Order Management Screenshot</strong>
-                                <span>Add your screenshot at<br><code>images/screenshots/orders.png</code></span>
-                            </div>
-                        </div>
-
-                        <img class="demo-shot"
-                             id="shot-reports"
-                             data-shot="reports"
-                             src="images/screenshots/reports.png"
-                             alt="FlowWMS Reports & Analytics screenshot"
-                             loading="lazy"
-                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                        <div class="shot-placeholder" data-shot="reports">
-                            <div class="placeholder-inner">
-                                <div class="placeholder-icon">🖼️</div>
-                                <strong>Reports &amp; Analytics Screenshot</strong>
-                                <span>Add your screenshot at<br><code>images/screenshots/reports.png</code></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CTA row below the browser frame -->
-            <div class="demo-cta-row reveal">
-                <!-- ↓ Replace href with your real app URL -->
-                <a href="https://app.flowwms.com"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="btn btn--primary btn--lg">
-                    Try the Live App
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-                <a href="#contact" class="btn btn--outline btn--lg">Book a Guided Tour</a>
-            </div>
-        </div>
-    </section>
 
     <!-- ═══════════════════════════════════════════
          HOW IT WORKS
@@ -960,6 +1115,10 @@
     </section>
 
     <!-- ═══════════════════════════════════════════
+         STATS SECTION
+    ═══════════════════════════════════════════ -->
+
+      <!-- ═══════════════════════════════════════════
          TRUSTED BY
     ═══════════════════════════════════════════ -->
     <section class="trusted">
@@ -977,6 +1136,47 @@
             </div>
         </div>
     </section>
+
+    <section class="stats-section" id="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <div class="stat-item__number">
+                        <span class="counter" data-target="500">0</span>
+                        <span class="stat-item__suffix">+</span>
+                    </div>
+                    <div class="stat-item__label">Companies Powered</div>
+                    <div class="stat-item__sub">across 30+ countries</div>
+                </div>
+                <div class="stat-item reveal" style="--delay: 0.1s">
+                    <div class="stat-item__number">
+                        <span class="counter" data-target="10">0</span>
+                        <span class="stat-item__suffix">M+</span>
+                    </div>
+                    <div class="stat-item__label">Orders Processed</div>
+                    <div class="stat-item__sub">monthly, and counting</div>
+                </div>
+                <div class="stat-item reveal" style="--delay: 0.2s">
+                    <div class="stat-item__number">
+                        <span class="counter" data-target="99">0</span>
+                        <span class="stat-item__suffix">.9%</span>
+                    </div>
+                    <div class="stat-item__label">Uptime Guaranteed</div>
+                    <div class="stat-item__sub">enterprise-grade SLA</div>
+                </div>
+                <div class="stat-item reveal" style="--delay: 0.3s">
+                    <div class="stat-item__number">
+                        <span class="counter" data-target="40">0</span>
+                        <span class="stat-item__suffix">%</span>
+                    </div>
+                    <div class="stat-item__label">Cost Reduction</div>
+                    <div class="stat-item__sub">average across customers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
 
     <!-- ═══════════════════════════════════════════
          CTA BANNER
