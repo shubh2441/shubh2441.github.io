@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="NordWMS logo">
+  <defs>
+    <linearGradient id="g" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#6C63FF"/>
+      <stop offset="100%" stop-color="#00D4AA"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#0A0F1F"/>
+  <path d="M32 8 52 20v24L32 56 12 44V20l20-12Zm0 8.8L18.5 22v20L32 47.2 45.5 42V22L32 16.8Zm-8 7.8h16v6H24v-6Zm0 12h16v6H24v-6Z" fill="url(#g)"/>
+</svg>
