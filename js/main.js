@@ -304,6 +304,11 @@ function initCounters() {
 
     if (!form) return;
 
+    // Initialize EmailJS
+    emailjs.init({
+        publicKey: 'zk1xLib941HEa_f4t'
+    });
+
     // Simple input validation helper
     function validateEmail(email) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -321,6 +326,8 @@ function initCounters() {
         const lastName  = form.lastName;
         const email     = form.email;
         const company   = form.company;
+        const interest  = form.interest;
+        const message   = form.message;
 
         let valid = true;
 
@@ -335,23 +342,47 @@ function initCounters() {
 
         if (!valid) return;
 
-        // Simulate submission — replace with real endpoint
+        // Prepare template parameters
+        const templateParams = {
+            firstName: firstName.value,
+            lastName: lastName.value,
+            email: email.value,
+            company: company.value,
+            interest: interest.value || 'Not specified',
+            message: message.value || 'No additional message provided'
+        };
+
+        // Send via EmailJS
         const submitBtn = form.querySelector('[type="submit"]');
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending…';
 
-        setTimeout(() => {
-            form.reset();
-            submitBtn.disabled   = false;
-            submitBtn.innerHTML  = 'Send Message <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>';
-            success.classList.add('visible');
-            success.style.display = 'block';
+        emailjs.send('service_51j9dbo', 'template_by84x9e', templateParams)
+            .then(() => {
+                form.reset();
+                submitBtn.disabled   = false;
+                submitBtn.innerHTML  = 'Send Message <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>';
+                success.classList.add('visible');
+                success.style.display = 'block';
 
-            setTimeout(() => {
-                success.classList.remove('visible');
-                success.style.display = 'none';
-            }, 6000);
-        }, 1200);
+                setTimeout(() => {
+                    success.classList.remove('visible');
+                    success.style.display = 'none';
+                }, 6000);
+            })
+            .catch((error) => {
+                console.error('EmailJS Error:', error);
+                submitBtn.disabled   = false;
+                submitBtn.innerHTML  = 'Send Message <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>';
+                
+                // Show error message
+                const errorMsg = document.createElement('div');
+                errorMsg.className = 'form-error';
+                errorMsg.textContent = 'Failed to send message. Please try again.';
+                form.insertBefore(errorMsg, submitBtn);
+                
+                setTimeout(() => errorMsg.remove(), 5000);
+            });
     });
 })();
 
