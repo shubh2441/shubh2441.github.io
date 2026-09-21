@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════════
-   FlowWMS — Main JavaScript
+   Nord WMS — Main JavaScript
    Animations · Interactions · UI Logic
 ════════════════════════════════════════════════════════════ */
 
