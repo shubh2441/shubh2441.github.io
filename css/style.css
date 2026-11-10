@@ -1363,6 +1363,12 @@ input, select, textarea { font-family: inherit; }
     background: var(--bg);
 }
 
+@media (max-width: 768px) {
+    .demo-section {
+        padding: 60px 0;
+    }
+}
+
 .demo-tabs-bar {
     display: flex;
     justify-content: center;
@@ -1522,7 +1528,7 @@ input, select, textarea { font-family: inherit; }
     font-family: monospace;
 }
 
-.proto-app--iframe { display: block; height: 520px; position: relative; }
+.proto-app--iframe { display: block; height: 520px; position: relative; min-height: 520px; }
 
 .proto-iframe {
     width: 100%;
@@ -1530,6 +1536,8 @@ input, select, textarea { font-family: inherit; }
     border: none;
     display: block;
     background: #F1F5F9;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 /* Shown only when the iframe fails to connect (JS-controlled) */
@@ -1562,6 +1570,10 @@ input, select, textarea { font-family: inherit; }
 
 /* ── Interactive Prototype ───────────────────────────────────── */
 .proto-frame { margin-top: 48px; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid var(--border); }
+
+@media (max-width: 768px) {
+    .proto-frame { margin-top: 32px; }
+}
 
 .proto-app { display: flex; height: 520px; overflow: hidden; }
 
@@ -1739,6 +1751,8 @@ input, select, textarea { font-family: inherit; }
 
 @media (max-width: 768px) {
     .proto-app { flex-direction: column; height: auto; }
+    .proto-app--iframe { height: auto; min-height: 400px; max-height: 600px; }
+    .proto-iframe { min-height: 400px; }
     .proto-sidebar { width: 100%; border-right: none; border-bottom: 1px solid #E8ECF0; }
     .proto-nav { flex-direction: row; overflow-x: auto; padding: 4px 8px; }
     .proto-nav-item { border-left: none; border-bottom: 3px solid transparent; padding: 8px 12px; white-space: nowrap; }
@@ -1757,6 +1771,17 @@ input, select, textarea { font-family: inherit; }
     gap: 12px;
     margin-top: 36px;
     flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+    .demo-cta-row {
+        gap: 10px;
+        margin-top: 24px;
+    }
+    .demo-cta-row .btn {
+        flex: 1;
+        min-width: 140px;
+    }
 }
 
 /* ── Pricing ─────────────────────────────────────────────────── */
@@ -2497,4 +2522,8 @@ input, select, textarea { font-family: inherit; }
     .float-card--3 { display: none; }
     .footer__grid { grid-template-columns: 1fr; }
     .footer__bottom { flex-direction: column; text-align: center; }
+    .proto-app--iframe { height: auto; min-height: 350px; max-height: 500px; }
+    .proto-iframe { min-height: 350px; }
+    .demo-browser__bar { padding: 10px 12px; }
+    .demo-browser__url { font-size: .7rem; padding: 4px 10px; }
 }
