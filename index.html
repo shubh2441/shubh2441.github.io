@@ -562,6 +562,9 @@
                     <div class="demo-browser__bar">
                         <div class="demo-browser__dots"><span></span><span></span><span></span></div>
                         <div class="demo-browser__url" id="proto-url-bar">🔒 wms-app-ui#/index/dashboard/demo</div>
+                        <a href="https://wms.nordsys.no/wms-app-ui#/index/dashboard/demo" target="_blank" rel="noopener noreferrer" class="demo-fullscreen-btn" title="Open in Full Screen">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+                        </a>
                     </div>
                     <!-- Update src to your public URL when deployed -->
                     <div class="proto-app proto-app--iframe">
@@ -856,6 +859,85 @@
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
                 <a href="#contact" class="btn btn--outline btn--lg">Get Full Access</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         LOCATION MAP SECTION
+    ═══════════════════════════════════════════ -->
+    <section class="locationmap-section" id="locationmap">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-badge">Warehouse Intelligence</div>
+                <h2 class="section-title">Real-time 3D<br><span class="gradient-text">warehouse visualization</span></h2>
+                <p class="section-desc">See your entire warehouse at a glance. Real-time 3D location mapping shows occupancy status, utilization rates, and stock levels across every aisle, zone, and level — making it instant to spot bottlenecks and optimize space allocation.</p>
+            </div>
+
+            <div class="locationmap-frame reveal">
+                <div class="locationmap-browser">
+                    <div class="locationmap-browser__bar">
+                        <div class="locationmap-browser__dots"><span></span><span></span><span></span></div>
+                        <div class="locationmap-browser__url" id="locationmap-url-bar">🔒 3D Location Map</div>
+                    </div>
+                    <div class="locationmap-app locationmap-app--iframe">
+                        <iframe
+                            src="https://wms.nordsys.no/wms-app-ui/#/locationmap-demo"
+                            class="locationmap-iframe"
+                            title="NordWMS 3D Location Map"
+                            frameborder="0"
+                            loading="eager"
+                            sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-popups-to-escape-sandbox allow-presentation"
+                            allow="accelerometer; autoplay; camera; clipboard-write; encrypted-media; geolocation; gyroscope; magnetometer; microphone; payment; usb; xr-spatial-tracking"
+                        ></iframe>
+                        <div class="locationmap-fallback" id="locationmap-fallback">
+                            <div class="locationmap-fallback__inner">
+                                <div class="locationmap-fallback__icon">🗺️</div>
+                                <strong>Location Map Loading</strong>
+                                <span>Initializing 3D warehouse visualization...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="locationmap-features reveal" style="--delay:0.1s">
+                <div class="locationmap-feature">
+                    <div class="locationmap-feature__icon">🎯</div>
+                    <div class="locationmap-feature__content">
+                        <h4>Real-Time Status</h4>
+                        <p>Occupied, partial, reserved, blocked, and empty locations updated instantly</p>
+                    </div>
+                </div>
+                <div class="locationmap-feature">
+                    <div class="locationmap-feature__icon">📊</div>
+                    <div class="locationmap-feature__content">
+                        <h4>Utilization Metrics</h4>
+                        <p>Warehouse fill percentage and aisle-by-aisle occupancy breakdown</p>
+                    </div>
+                </div>
+                <div class="locationmap-feature">
+                    <div class="locationmap-feature__icon">🔍</div>
+                    <div class="locationmap-feature__content">
+                        <h4>Smart Filtering</h4>
+                        <p>Filter by aisle, side, and level to focus on specific warehouse zones</p>
+                    </div>
+                </div>
+                <div class="locationmap-feature">
+                    <div class="locationmap-feature__icon">📱</div>
+                    <div class="locationmap-feature__content">
+                        <h4>Multi-Device</h4>
+                        <p>Works seamlessly on desktop, tablet, and mobile for warehouse floor visibility</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="locationmap-cta-row reveal">
+                <a href="#contact" class="btn btn--primary btn--lg">
+                    Request Live Demo
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#contact" class="btn btn--outline btn--lg">Get Pricing</a>
             </div>
         </div>
     </section>
