@@ -204,7 +204,8 @@
             </a>
             <ul class="navbar__links" id="navbar-links">
                 <li><a href="#features" class="nav-link">Features</a></li>
-                <li><a href="#demo" class="nav-link">Platform</a></li>
+                <li><a href="#demo" class="nav-link">Live Demo</a></li>
+                <li><a href="#mobile-demo" class="nav-link">Mobile App</a></li>
                 <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
                 <!-- <li><a href="#pricing" class="nav-link">Pricing</a></li> -->
                 <li><a href="#about" class="nav-link">About</a></li>
@@ -224,7 +225,8 @@
     <div class="mobile-menu" id="mobile-menu">
         <ul>
             <li><a href="#features" class="mobile-link">Features</a></li>
-            <li><a href="#demo" class="mobile-link">Platform</a></li>
+            <li><a href="#demo" class="mobile-link">Live Demo</a></li>
+            <li><a href="#mobile-demo" class="mobile-link">Mobile App</a></li>
             <li><a href="#how-it-works" class="mobile-link">How It Works</a></li>
             <li><a href="#pricing" class="mobile-link">Pricing</a></li>
             <li><a href="#about" class="mobile-link">About</a></li>
@@ -549,41 +551,181 @@
         </div>
     </section>
 
-        <section class="demo-section" id="demo">
-        <div class="container">
+    <!-- ═══════════════════════════════════════════
+         LIVE DEMOS SHOWCASE
+    ═══════════════════════════════════════════ -->
+    <section class="showcase" id="demo">
+        <div class="showcase__bg" aria-hidden="true">
+            <div class="blob blob--1"></div>
+            <div class="blob blob--2"></div>
+            <div class="grid-overlay"></div>
+        </div>
+        <div class="container showcase__container">
             <div class="section-header reveal">
-                <div class="section-badge">Platform</div>
-                <h2 class="section-title">See NordWMS in<br><span class="gradient-text">action — live</span></h2>
-                <p class="section-desc">Click through the dashboard, browse orders, and explore SLA reports — no login needed.</p>
+                <div class="section-badge">Live Demos</div>
+                <h2 class="section-title">Don't take our word for it.<br><span class="gradient-text">Click through it.</span></h2>
+                <p class="section-desc">Two real NordWMS screens, running live. No login, no sign-up — just pick a demo and explore.</p>
             </div>
 
-            <div class="proto-frame reveal">
-                <div class="demo-browser">
-                    <div class="demo-browser__bar">
-                        <div class="demo-browser__dots"><span></span><span></span><span></span></div>
-                        <div class="demo-browser__url" id="proto-url-bar">🔒 wms-app-ui#/index/dashboard/demo</div>
-                        <a href="https://wms.nordsys.no/wms-app-ui#/index/dashboard/demo" target="_blank" rel="noopener noreferrer" class="demo-fullscreen-btn" title="Open in Full Screen">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
-                        </a>
-                    </div>
-                    <!-- Update src to your public URL when deployed -->
-                    <div class="proto-app proto-app--iframe">
+            <div class="sc-tabs reveal" role="tablist" aria-label="Live demos">
+                <button class="sc-tab active" role="tab" aria-selected="true" aria-controls="sc-pane-dashboard" id="sc-tab-dashboard" data-pane="dashboard"
+                        data-url="https://wms.nordsys.no/wms-app-ui/#/dashboard/demo"
+                        data-desc="Live KPIs, order flow and SLA performance — the control tower view for warehouse managers.">
+                    <span class="sc-tab__icon">📊</span>
+                    <span class="sc-tab__text">
+                        <strong>Dashboard</strong>
+                        <small>Live KPIs &amp; SLA</small>
+                    </span>
+                    <span class="sc-tab__num">01</span>
+                </button>
+                <button class="sc-tab" role="tab" aria-selected="false" aria-controls="sc-pane-return" id="sc-tab-return" data-pane="return"
+                        data-url="https://wms.nordsys.no/wms-app-ui/#/return-order-demo"
+                        data-desc="Receive, inspect and restock returned goods in a few clicks — from RMA to back on the shelf.">
+                    <span class="sc-tab__icon">↩️</span>
+                    <span class="sc-tab__text">
+                        <strong>Return Orders</strong>
+                        <small>RMA to restock</small>
+                    </span>
+                    <span class="sc-tab__num">02</span>
+                </button>
+            </div>
+
+            <div class="sc-frame reveal">
+                <div class="sc-frame__bar">
+                    <div class="demo-browser__dots"><span></span><span></span><span></span></div>
+                    <div class="sc-frame__url" id="sc-url">🔒 wms.nordsys.no/wms-app-ui/#/dashboard/demo</div>
+                    <span class="sc-frame__live"><i></i>LIVE</span>
+                    <a href="https://wms.nordsys.no/wms-app-ui/#/dashboard/demo" id="sc-open" target="_blank" rel="noopener noreferrer" class="sc-frame__open" title="Open in a new tab">
+                        <span>Open full screen</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M8 7h9v9"/></svg>
+                    </a>
+                </div>
+
+                <div class="sc-stage">
+                    <div class="sc-pane active" id="sc-pane-dashboard" role="tabpanel" aria-labelledby="sc-tab-dashboard">
+                        <div class="sc-loader"><span></span><em>Loading dashboard…</em></div>
                         <iframe
-                            src="https://wms.nordsys.no/wms-app-ui#/index/dashboard/demo"
-                            class="proto-iframe"
+                            src="https://wms.nordsys.no/wms-app-ui/#/dashboard/demo"
+                            class="sc-iframe"
                             title="NordWMS Dashboard Demo"
-                            frameborder="0"
-                            loading="eager"
+                            loading="lazy"
                             sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-popups-to-escape-sandbox allow-presentation"
-                            allow="accelerometer; autoplay; camera; clipboard-write; encrypted-media; geolocation; gyroscope; magnetometer; microphone; payment; usb; xr-spatial-tracking"
+                            allow="clipboard-write; fullscreen"
                         ></iframe>
-                        <div class="proto-iframe-fallback" id="proto-iframe-fallback">
-                            <div class="proto-iframe-fallback__inner">
-                                <div class="proto-iframe-fallback__icon">🔌</div>
-                                <strong>App not running</strong>
-                                <span>Start NordWMS locally at <code>localhost:4300</code> to see the live demo here.</span>
-                            </div>
+                    </div>
+                    <div class="sc-pane" id="sc-pane-return" role="tabpanel" aria-labelledby="sc-tab-return">
+                        <div class="sc-loader"><span></span><em>Loading return order demo…</em></div>
+                        <iframe
+                            data-src="https://wms.nordsys.no/wms-app-ui/#/return-order-demo"
+                            class="sc-iframe"
+                            title="NordWMS Return Order Demo"
+                            loading="lazy"
+                            sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-popups-to-escape-sandbox allow-presentation"
+                            allow="clipboard-write; fullscreen"
+                        ></iframe>
+                    </div>
+                </div>
+
+                <div class="sc-frame__foot">
+                    <p id="sc-desc">Live KPIs, order flow and SLA performance — the control tower view for warehouse managers.</p>
+                    <span class="sc-frame__hint">Not loading? Use <strong>Open full screen</strong>.</span>
+                </div>
+            </div>
+
+            <div class="demo-cta-row reveal">
+                <a href="#contact" class="btn btn--primary btn--lg">
+                    Book a Guided Tour
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#mobile-demo" class="btn btn--glass btn--lg">See the Mobile App ↓</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         MOBILE APP SHOWCASE
+         Drop screenshots into images/mobile/ (screen-1.png … screen-5.png)
+    ═══════════════════════════════════════════ -->
+    <section class="mobile-showcase" id="mobile-demo">
+        <div class="mobile-showcase__bg" aria-hidden="true">
+            <div class="blob blob--1"></div>
+            <div class="blob blob--3"></div>
+        </div>
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-badge">Mobile App</div>
+                <h2 class="section-title">The whole warehouse,<br><span class="gradient-text">in your pocket</span></h2>
+                <p class="section-desc">Scan, pick, receive and count straight from the floor. Built offline-first for iOS and Android.</p>
+            </div>
+
+            <div class="phones reveal">
+                <figure class="phone-shot">
+                    <div class="phone-shot__device">
+                        <span class="phone-shot__notch"></span>
+                        <div class="phone-shot__screen">
+                            <div class="phone-shot__empty"><span>📱</span><strong>Screenshot 1</strong><code>images/mobile/screen-1.png</code></div>
+                            <img src="images/mobile/screen-1.png" alt="NordWMS mobile app — home screen" width="390" height="844" loading="lazy" onerror="this.hidden=true">
                         </div>
+                    </div>
+                    <figcaption>Home</figcaption>
+                </figure>
+                <figure class="phone-shot">
+                    <div class="phone-shot__device">
+                        <span class="phone-shot__notch"></span>
+                        <div class="phone-shot__screen">
+                            <div class="phone-shot__empty"><span>📱</span><strong>Screenshot 2</strong><code>images/mobile/screen-2.png</code></div>
+                            <img src="images/mobile/screen-2.png" alt="NordWMS mobile app — picking" width="390" height="844" loading="lazy" onerror="this.hidden=true">
+                        </div>
+                    </div>
+                    <figcaption>Pick &amp; Scan</figcaption>
+                </figure>
+                <figure class="phone-shot phone-shot--hero">
+                    <div class="phone-shot__device">
+                        <span class="phone-shot__notch"></span>
+                        <div class="phone-shot__screen">
+                            <div class="phone-shot__empty"><span>📱</span><strong>Screenshot 3</strong><code>images/mobile/screen-3.png</code></div>
+                            <img src="images/mobile/screen-3.png" alt="NordWMS mobile app — return orders" width="390" height="844" loading="lazy" onerror="this.hidden=true">
+                        </div>
+                    </div>
+                    <figcaption>Returns</figcaption>
+                </figure>
+                <figure class="phone-shot">
+                    <div class="phone-shot__device">
+                        <span class="phone-shot__notch"></span>
+                        <div class="phone-shot__screen">
+                            <div class="phone-shot__empty"><span>📱</span><strong>Screenshot 4</strong><code>images/mobile/screen-4.png</code></div>
+                            <img src="images/mobile/screen-4.png" alt="NordWMS mobile app — inventory" width="390" height="844" loading="lazy" onerror="this.hidden=true">
+                        </div>
+                    </div>
+                    <figcaption>Inventory</figcaption>
+                </figure>
+                <figure class="phone-shot">
+                    <div class="phone-shot__device">
+                        <span class="phone-shot__notch"></span>
+                        <div class="phone-shot__screen">
+                            <div class="phone-shot__empty"><span>📱</span><strong>Screenshot 5</strong><code>images/mobile/screen-5.png</code></div>
+                            <img src="images/mobile/screen-5.png" alt="NordWMS mobile app — receiving" width="390" height="844" loading="lazy" onerror="this.hidden=true">
+                        </div>
+                    </div>
+                    <figcaption>Receiving</figcaption>
+                </figure>
+            </div>
+
+            <ul class="mobile-pills reveal">
+                <li>⚡ Offline-first sync</li>
+                <li>📷 Built-in barcode scanner</li>
+                <li>🔔 Real-time push alerts</li>
+                <li>🍎 iOS &amp; 🤖 Android</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Legacy static mock (unused, hidden) -->
+    <section class="legacy-proto" hidden>
+        <div class="container">
+            <div class="proto-frame">
+                <div class="demo-browser">
+                    <div class="proto-app">
                         <aside class="proto-sidebar" style="display:none">
                             <div class="proto-logo-bar">
                                 <div class="proto-logo-mark">

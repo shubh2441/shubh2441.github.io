@@ -231,36 +231,40 @@ function initCounters() {
 })();
 
 
-/* ── Interactive Prototype (NordWMS demo — iframe) ─────────── */
-(function initProto() {
-    const iframe   = document.querySelector('.proto-iframe');
-    const fallback = document.getElementById('proto-iframe-fallback');
-    if (!iframe || !fallback) return;
+/* ── Live Demo Showcase (tabbed iframes) ───────────────────── */
+(function initShowcase() {
+    const tabs = document.querySelectorAll('.sc-tab');
+    if (!tabs.length) return;
 
-    // Show fallback if iframe fails to load (app not running locally)
-    iframe.addEventListener('error', () => fallback.classList.add('visible'));
+    const urlBar = document.getElementById('sc-url');
+    const openBtn = document.getElementById('sc-open');
+    const desc = document.getElementById('sc-desc');
 
-    // Heuristic: if load fires but content is inaccessible, show fallback after brief delay
-    iframe.addEventListener('load', () => {
-        try {
-            // Cross-origin access throws — means app loaded fine, hide fallback
-            void iframe.contentWindow.location.href;
-        } catch (_) {
-            // Cross-origin means it loaded; do nothing
-        }
+    document.querySelectorAll('.sc-pane').forEach(pane => {
+        const frame = pane.querySelector('iframe');
+        frame.addEventListener('load', () => pane.classList.add('is-loaded'));
     });
 
-    // Timeout fallback: if still blank after 4s, assume app isn't running
-    setTimeout(() => {
-        try {
-            const doc = iframe.contentDocument || iframe.contentWindow?.document;
-            if (!doc || doc.body === null || doc.body.innerHTML.trim() === '') {
-                fallback.classList.add('visible');
-            }
-        } catch (_) {
-            // Cross-origin = loaded fine
-        }
-    }, 4000);
+    function activate(tab) {
+        tabs.forEach(t => {
+            const on = t === tab;
+            t.classList.toggle('active', on);
+            t.setAttribute('aria-selected', on);
+        });
+        document.querySelectorAll('.sc-pane').forEach(p => p.classList.remove('active'));
+
+        const pane = document.getElementById('sc-pane-' + tab.dataset.pane);
+        const frame = pane.querySelector('iframe');
+        // Load the second demo only when first requested
+        if (!frame.getAttribute('src')) frame.src = frame.dataset.src;
+        pane.classList.add('active');
+
+        urlBar.textContent = '🔒 ' + tab.dataset.url.replace(/^https?:\/\//, '');
+        openBtn.href = tab.dataset.url;
+        desc.textContent = tab.dataset.desc;
+    }
+
+    tabs.forEach(tab => tab.addEventListener('click', () => activate(tab)));
 })();
 
 
