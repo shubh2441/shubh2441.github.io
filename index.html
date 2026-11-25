@@ -604,8 +604,13 @@
                 <div class="sc-stage">
                     <div class="sc-pane active" id="sc-pane-dashboard" role="tabpanel" aria-labelledby="sc-tab-dashboard">
                         <div class="sc-loader"><span></span><em>Loading dashboard…</em></div>
+                        <button type="button" class="sc-launch" id="sc-launch">
+                            <span class="sc-launch__play"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+                            <strong>Launch live demo</strong>
+                            <small>Loads only when you click</small>
+                        </button>
                         <iframe
-                            src="https://wms.nordsys.no/wms-app-ui/#/dashboard/demo"
+                            data-src="https://wms.nordsys.no/wms-app-ui/#/dashboard/demo"
                             class="sc-iframe"
                             title="NordWMS Dashboard Demo"
                             loading="lazy"
@@ -624,6 +629,7 @@
                             allow="clipboard-write; fullscreen"
                         ></iframe>
                     </div>
+                    <button type="button" class="sc-guard" id="sc-guard" aria-label="Click to interact with the demo"><span>Click to interact</span></button>
                 </div>
 
                 <div class="sc-frame__foot">

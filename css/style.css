@@ -2964,6 +2964,43 @@ input, select, textarea { font-family: inherit; }
 }
 .sc-loader em { font-style: normal; }
 .sc-pane.is-loaded .sc-loader { opacity: 0; visibility: hidden; }
+
+.sc-launch {
+    position: absolute; inset: 0; z-index: 4;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+    color: #fff; cursor: pointer; font-family: inherit;
+    background: radial-gradient(circle at 50% 40%, rgba(108,99,255,.55), #0E1229 70%);
+    border: 0;
+    transition: opacity .3s ease, visibility .3s;
+}
+.sc-launch strong { font-family: var(--font-heading); font-size: 1.3rem; }
+.sc-launch small { opacity: .65; font-size: .8rem; }
+.sc-launch__play {
+    display: grid; place-items: center;
+    width: 76px; height: 76px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    box-shadow: 0 0 0 10px rgba(255,255,255,.08), 0 16px 40px rgba(108,99,255,.6);
+    transition: transform .3s ease;
+}
+.sc-launch:hover .sc-launch__play { transform: scale(1.1); }
+.sc-pane.is-launched .sc-launch { opacity: 0; visibility: hidden; pointer-events: none; }
+
+/* Sits above the iframe so page scrolling passes over it until the user clicks in */
+.sc-guard {
+    position: absolute; inset: 0; z-index: 3;
+    display: flex; align-items: flex-end; justify-content: center;
+    padding-bottom: 20px;
+    background: transparent; border: 0; cursor: pointer;
+}
+.sc-guard span {
+    padding: 8px 16px; border-radius: 999px;
+    font-size: .8rem; font-weight: 700; color: #fff;
+    background: rgba(7,10,26,.8); backdrop-filter: blur(6px);
+    opacity: 0; transform: translateY(6px);
+    transition: var(--transition);
+}
+.sc-guard:hover span { opacity: 1; transform: none; }
+.sc-guard.is-off { display: none; }
 @keyframes scSpin { to { transform: rotate(360deg); } }
 
 .sc-frame__foot {

@@ -240,10 +240,30 @@ function initCounters() {
     const openBtn = document.getElementById('sc-open');
     const desc = document.getElementById('sc-desc');
 
+    const stage = document.querySelector('.sc-stage');
+    const guard = document.getElementById('sc-guard');
+    const launch = document.getElementById('sc-launch');
+
     document.querySelectorAll('.sc-pane').forEach(pane => {
         const frame = pane.querySelector('iframe');
         frame.addEventListener('load', () => pane.classList.add('is-loaded'));
     });
+
+    // Embedded apps may focus/scroll themselves on load and drag the page to the demo, so load on click only.
+    function load(pane) {
+        const frame = pane.querySelector('iframe');
+        if (!frame.getAttribute('src')) frame.src = frame.dataset.src;
+        pane.classList.add('is-launched');
+    }
+
+    launch.addEventListener('click', () => {
+        load(launch.closest('.sc-pane'));
+        guard.classList.add('is-off');
+    });
+
+    // The iframe only captures wheel/touch scrolling after an explicit click; it re-arms when the pointer leaves.
+    guard.addEventListener('click', () => guard.classList.add('is-off'));
+    stage.addEventListener('mouseleave', () => guard.classList.remove('is-off'));
 
     function activate(tab) {
         tabs.forEach(t => {
@@ -254,9 +274,7 @@ function initCounters() {
         document.querySelectorAll('.sc-pane').forEach(p => p.classList.remove('active'));
 
         const pane = document.getElementById('sc-pane-' + tab.dataset.pane);
-        const frame = pane.querySelector('iframe');
-        // Load the second demo only when first requested
-        if (!frame.getAttribute('src')) frame.src = frame.dataset.src;
+        load(pane);
         pane.classList.add('active');
 
         urlBar.textContent = '🔒 ' + tab.dataset.url.replace(/^https?:\/\//, '');
