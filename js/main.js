@@ -251,9 +251,24 @@ function initCounters() {
         if (!frame.getAttribute('src')) frame.src = frame.dataset.src;
     }
 
-    // The iframe only captures wheel/touch scrolling after an explicit click; it re-arms when the pointer leaves.
-    guard.addEventListener('click', () => guard.classList.add('is-off'));
-    stage.addEventListener('mouseleave', () => guard.classList.remove('is-off'));
+    const frames = [...stage.querySelectorAll('iframe')];
+    let inStage = false;
+
+    // Armed = iframes are inert, so the embedded app can't take focus, grab wheel/touch input or drag the page to itself.
+    function arm(on) {
+        guard.classList.toggle('is-off', !on);
+        frames.forEach(f => { f.inert = on; });
+        if (on && frames.includes(document.activeElement)) {
+            document.activeElement.blur();
+            window.focus();
+        }
+    }
+    arm(true);
+    guard.addEventListener('click', () => arm(false));
+    stage.addEventListener('mouseenter', () => { inStage = true; });
+    stage.addEventListener('mouseleave', () => { inStage = false; arm(true); });
+    ['touchstart', 'wheel'].forEach(ev =>
+        document.addEventListener(ev, e => { if (!stage.contains(e.target)) arm(true); }, { passive: true, capture: true }));
 
     // Start the demo when the section comes into view; hide the iframe once the user scrolls away.
     let started = false;
@@ -266,18 +281,40 @@ function initCounters() {
         }
     }, { threshold: [0, 0.2, 0.4] }).observe(stage);
 
-    // Undo page jumps the embedded app causes (focus/scrollIntoView) when the user didn't scroll.
-    let userUntil = 0;
+    // Revert page jumps that don't match the user's own scroll gesture (the embedded app pulling the page back).
     let lastY = window.scrollY;
-    const markUser = (ms) => () => { userUntil = Date.now() + ms; };
-    ['wheel', 'touchstart', 'touchmove', 'mousedown', 'keydown', 'click'].forEach(ev =>
-        window.addEventListener(ev, markUser(1500), { passive: true, capture: true }));
-    window.addEventListener('touchend', markUser(2500), { passive: true });
+    let dir = 0, dirUntil = 0, freeUntil = 0, touchY = 0;
+    const opts = { passive: true, capture: true };
+    const free = (ms) => () => { freeUntil = Date.now() + ms; };
+    const resetFree = () => { freeUntil = 0; };
+
+    // Clicks, keys and scrollbar drags legitimately move the page by large steps.
+    ['click', 'keydown'].forEach(ev => window.addEventListener(ev, free(2500), opts));
+    window.addEventListener('mousedown', () => { freeUntil = Infinity; }, opts);
+    window.addEventListener('mouseup', free(400), opts);
+    window.addEventListener('blur', resetFree);
+
+    // Smooth-scroll animations arrive as many small steps, so every step without a user gesture is reverted.
+    window.addEventListener('wheel', e => { dir = Math.sign(e.deltaY); dirUntil = Date.now() + 700; }, opts);
+    window.addEventListener('touchstart', e => { touchY = e.touches[0].clientY; }, opts);
+    window.addEventListener('touchmove', e => {
+        const y = e.touches[0].clientY;
+        if (touchY !== y) { dir = Math.sign(touchY - y); dirUntil = Date.now() + 700; }
+        touchY = y;
+    }, opts);
+    window.addEventListener('touchend', () => { dirUntil = Date.now() + 2000; }, opts);
+
     window.addEventListener('scroll', () => {
         const y = window.scrollY;
-        if (started && Date.now() > userUntil && Math.abs(y - lastY) > 60) {
-            window.scrollTo({ top: lastY, behavior: 'instant' });
-            return;
+        const d = y - lastY;
+        const now = Date.now();
+        const interacting = inStage && guard.classList.contains('is-off');
+        if (started && d !== 0 && now > freeUntil && !interacting) {
+            const byUser = now < dirUntil && Math.sign(d) === dir && Math.abs(d) <= 500;
+            if (!byUser) {
+                window.scrollTo({ top: lastY, behavior: 'instant' });
+                return;
+            }
         }
         lastY = y;
     }, { passive: true });
