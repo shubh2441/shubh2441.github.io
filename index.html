@@ -593,22 +593,12 @@
             <div class="sc-frame reveal">
                 <div class="sc-frame__bar">
                     <div class="demo-browser__dots"><span></span><span></span><span></span></div>
-                    <div class="sc-frame__url" id="sc-url">🔒 wms.nordsys.no/wms-app-ui/#/dashboard/demo</div>
                     <span class="sc-frame__live"><i></i>LIVE</span>
-                    <a href="https://wms.nordsys.no/wms-app-ui/#/dashboard/demo" id="sc-open" target="_blank" rel="noopener noreferrer" class="sc-frame__open" title="Open in a new tab">
-                        <span>Open full screen</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M8 7h9v9"/></svg>
-                    </a>
                 </div>
 
                 <div class="sc-stage">
                     <div class="sc-pane active" id="sc-pane-dashboard" role="tabpanel" aria-labelledby="sc-tab-dashboard">
                         <div class="sc-loader"><span></span><em>Loading dashboard…</em></div>
-                        <button type="button" class="sc-launch" id="sc-launch">
-                            <span class="sc-launch__play"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-                            <strong>Launch live demo</strong>
-                            <small>Loads only when you click</small>
-                        </button>
                         <iframe
                             data-src="https://wms.nordsys.no/wms-app-ui/#/dashboard/demo"
                             class="sc-iframe"
@@ -634,7 +624,6 @@
 
                 <div class="sc-frame__foot">
                     <p id="sc-desc">Live KPIs, order flow and SLA performance — the control tower view for warehouse managers.</p>
-                    <span class="sc-frame__hint">Not loading? Use <strong>Open full screen</strong>.</span>
                 </div>
             </div>
 
@@ -670,7 +659,7 @@
                         <span class="phone-shot__notch"></span>
                         <div class="phone-shot__screen">
                             <div class="phone-shot__empty"><span>📱</span><strong>Screenshot 1</strong><code>images/mobile/screen-1.png</code></div>
-                            <img src="images/mobile/screen-1.png" alt="NordWMS mobile app — home screen" width="390" height="844" loading="lazy" onerror="this.hidden=true">
+                            <img src="images/mobile/screen-1.png" alt="NordWMS mobile app — home screen" width="390" height="844" loading="lazy" onload="this.previousElementSibling.hidden=true" onerror="this.hidden=true">
                         </div>
                     </div>
                     <figcaption>Home</figcaption>
@@ -680,7 +669,7 @@
                         <span class="phone-shot__notch"></span>
                         <div class="phone-shot__screen">
                             <div class="phone-shot__empty"><span>📱</span><strong>Screenshot 2</strong><code>images/mobile/screen-2.png</code></div>
-                            <img src="images/mobile/screen-2.png" alt="NordWMS mobile app — picking" width="390" height="844" loading="lazy" onerror="this.hidden=true">
+                            <img src="images/mobile/screen-2.png" alt="NordWMS mobile app — picking" width="390" height="844" loading="lazy" onload="this.previousElementSibling.hidden=true" onerror="this.hidden=true">
                         </div>
                     </div>
                     <figcaption>Pick &amp; Scan</figcaption>
@@ -690,7 +679,7 @@
                         <span class="phone-shot__notch"></span>
                         <div class="phone-shot__screen">
                             <div class="phone-shot__empty"><span>📱</span><strong>Screenshot 3</strong><code>images/mobile/screen-3.png</code></div>
-                            <img src="images/mobile/screen-3.png" alt="NordWMS mobile app — return orders" width="390" height="844" loading="lazy" onerror="this.hidden=true">
+                            <img src="images/mobile/screen-3.png" alt="NordWMS mobile app — return orders" width="390" height="844" loading="lazy" onload="this.previousElementSibling.hidden=true" onerror="this.hidden=true">
                         </div>
                     </div>
                     <figcaption>Returns</figcaption>
@@ -700,7 +689,7 @@
                         <span class="phone-shot__notch"></span>
                         <div class="phone-shot__screen">
                             <div class="phone-shot__empty"><span>📱</span><strong>Screenshot 4</strong><code>images/mobile/screen-4.png</code></div>
-                            <img src="images/mobile/screen-4.png" alt="NordWMS mobile app — inventory" width="390" height="844" loading="lazy" onerror="this.hidden=true">
+                            <img src="images/mobile/screen-4.png" alt="NordWMS mobile app — inventory" width="390" height="844" loading="lazy" onload="this.previousElementSibling.hidden=true" onerror="this.hidden=true">
                         </div>
                     </div>
                     <figcaption>Inventory</figcaption>
@@ -710,7 +699,7 @@
                         <span class="phone-shot__notch"></span>
                         <div class="phone-shot__screen">
                             <div class="phone-shot__empty"><span>📱</span><strong>Screenshot 5</strong><code>images/mobile/screen-5.png</code></div>
-                            <img src="images/mobile/screen-5.png" alt="NordWMS mobile app — receiving" width="390" height="844" loading="lazy" onerror="this.hidden=true">
+                            <img src="images/mobile/screen-5.png" alt="NordWMS mobile app — receiving" width="390" height="844" loading="lazy" onload="this.previousElementSibling.hidden=true" onerror="this.hidden=true">
                         </div>
                     </div>
                     <figcaption>Receiving</figcaption>
@@ -1668,6 +1657,16 @@
         </div>
     </footer>
     </main>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Mobile app screenshot" hidden>
+        <button type="button" class="lightbox__btn lightbox__close" aria-label="Close">✕</button>
+        <button type="button" class="lightbox__btn lightbox__nav lightbox__prev" aria-label="Previous screenshot">‹</button>
+        <figure class="lightbox__figure">
+            <img class="lightbox__img" alt="">
+            <figcaption class="lightbox__cap"></figcaption>
+        </figure>
+        <button type="button" class="lightbox__btn lightbox__nav lightbox__next" aria-label="Next screenshot">›</button>
+    </div>
 
     <script src="js/main.js"></script>
 </body>

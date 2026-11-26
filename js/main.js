@@ -236,34 +236,51 @@ function initCounters() {
     const tabs = document.querySelectorAll('.sc-tab');
     if (!tabs.length) return;
 
-    const urlBar = document.getElementById('sc-url');
-    const openBtn = document.getElementById('sc-open');
     const desc = document.getElementById('sc-desc');
 
     const stage = document.querySelector('.sc-stage');
     const guard = document.getElementById('sc-guard');
-    const launch = document.getElementById('sc-launch');
 
     document.querySelectorAll('.sc-pane').forEach(pane => {
         const frame = pane.querySelector('iframe');
         frame.addEventListener('load', () => pane.classList.add('is-loaded'));
     });
 
-    // Embedded apps may focus/scroll themselves on load and drag the page to the demo, so load on click only.
     function load(pane) {
         const frame = pane.querySelector('iframe');
         if (!frame.getAttribute('src')) frame.src = frame.dataset.src;
-        pane.classList.add('is-launched');
     }
-
-    launch.addEventListener('click', () => {
-        load(launch.closest('.sc-pane'));
-        guard.classList.add('is-off');
-    });
 
     // The iframe only captures wheel/touch scrolling after an explicit click; it re-arms when the pointer leaves.
     guard.addEventListener('click', () => guard.classList.add('is-off'));
     stage.addEventListener('mouseleave', () => guard.classList.remove('is-off'));
+
+    // Start the demo when the section comes into view; hide the iframe once the user scrolls away.
+    let started = false;
+    new IntersectionObserver(([entry]) => {
+        const away = entry.intersectionRatio < 0.2;
+        stage.classList.toggle('is-away', away);
+        if (!away && !started) {
+            started = true;
+            load(document.querySelector('.sc-pane.active'));
+        }
+    }, { threshold: [0, 0.2, 0.4] }).observe(stage);
+
+    // Undo page jumps the embedded app causes (focus/scrollIntoView) when the user didn't scroll.
+    let userUntil = 0;
+    let lastY = window.scrollY;
+    const markUser = (ms) => () => { userUntil = Date.now() + ms; };
+    ['wheel', 'touchstart', 'touchmove', 'mousedown', 'keydown', 'click'].forEach(ev =>
+        window.addEventListener(ev, markUser(1500), { passive: true, capture: true }));
+    window.addEventListener('touchend', markUser(2500), { passive: true });
+    window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        if (started && Date.now() > userUntil && Math.abs(y - lastY) > 60) {
+            window.scrollTo({ top: lastY, behavior: 'instant' });
+            return;
+        }
+        lastY = y;
+    }, { passive: true });
 
     function activate(tab) {
         tabs.forEach(t => {
@@ -277,12 +294,83 @@ function initCounters() {
         load(pane);
         pane.classList.add('active');
 
-        urlBar.textContent = '🔒 ' + tab.dataset.url.replace(/^https?:\/\//, '');
-        openBtn.href = tab.dataset.url;
         desc.textContent = tab.dataset.desc;
     }
 
     tabs.forEach(tab => tab.addEventListener('click', () => activate(tab)));
+})();
+
+
+/* ── Mobile screenshot lightbox ────────────────────────────── */
+(function initPhoneLightbox() {
+    const box = document.getElementById('lightbox');
+    const shots = [...document.querySelectorAll('.phone-shot')];
+    if (!box || !shots.length) return;
+
+    const img = box.querySelector('.lightbox__img');
+    const cap = box.querySelector('.lightbox__cap');
+    let list = [];
+    let index = 0;
+    let opener = null;
+
+    const hasImage = (fig) => { const i = fig.querySelector('img'); return i && !i.hidden; };
+
+    function show(i) {
+        index = (i + list.length) % list.length;
+        const fig = list[index];
+        const src = fig.querySelector('img');
+        img.src = src.currentSrc || src.src;
+        img.alt = src.alt;
+        cap.textContent = fig.querySelector('figcaption').textContent;
+    }
+
+    function open(fig) {
+        list = shots.filter(hasImage);
+        if (!list.includes(fig)) return;
+        opener = fig.querySelector('.phone-shot__device');
+        show(list.indexOf(fig));
+        box.hidden = false;
+        document.body.style.overflow = 'hidden';
+        box.querySelector('.lightbox__close').focus();
+    }
+
+    function close() {
+        box.hidden = true;
+        img.removeAttribute('src');
+        document.body.style.overflow = '';
+        opener?.focus();
+    }
+
+    shots.forEach(fig => {
+        const device = fig.querySelector('.phone-shot__device');
+        device.tabIndex = 0;
+        device.setAttribute('role', 'button');
+        device.setAttribute('aria-label', 'View ' + fig.querySelector('figcaption').textContent + ' screenshot full size');
+        device.addEventListener('click', () => open(fig));
+        device.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(fig); }
+        });
+    });
+
+    box.addEventListener('click', e => { if (e.target === box || e.target.closest('.lightbox__close')) close(); });
+    box.querySelector('.lightbox__prev').addEventListener('click', () => show(index - 1));
+    box.querySelector('.lightbox__next').addEventListener('click', () => show(index + 1));
+
+    document.addEventListener('keydown', e => {
+        if (box.hidden) return;
+        if (e.key === 'Escape') close();
+        else if (e.key === 'ArrowLeft') show(index - 1);
+        else if (e.key === 'ArrowRight') show(index + 1);
+    });
+
+    let touchX = null;
+    box.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+    box.addEventListener('touchend', e => {
+        if (touchX === null) return;
+        const dx = e.changedTouches[0].clientX - touchX;
+        touchX = null;
+        if (Math.abs(dx) > 50) show(index + (dx < 0 ? 1 : -1));
+    }, { passive: true });
 })();
 
 
