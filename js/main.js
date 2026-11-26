@@ -231,6 +231,54 @@ function initCounters() {
 })();
 
 
+/* ── Touch helpers for embedded demos ──────────────────────── */
+function makeExitButton(host, onExit) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'demo-exit';
+    btn.textContent = 'Done \u2715';
+    btn.setAttribute('aria-label', 'Stop interacting and scroll the page');
+    btn.hidden = true;
+    btn.addEventListener('click', onExit);
+    host.appendChild(btn);
+    return btn;
+}
+
+/* Location map iframe: on touch devices, swipes scroll the page until the user taps in. */
+(function initLocationMapTouchGuard() {
+    if (!window.matchMedia('(hover: none)').matches) return;
+    const host = document.querySelector('.locationmap-app--iframe');
+    const frame = host && host.querySelector('iframe');
+    if (!frame) return;
+
+    const guard = document.createElement('button');
+    guard.type = 'button';
+    guard.className = 'sc-guard sc-guard--touch';
+    guard.setAttribute('aria-label', 'Tap to interact with the 3D map');
+    guard.innerHTML = '<span>Tap to interact</span>';
+    host.appendChild(guard);
+
+    const exit = makeExitButton(host, () => arm(true));
+    let live = false;
+    // The embedded app scrolls the parent page on its own, so it only runs while the user is interacting.
+    frame.dataset.src = frame.src;
+    frame.src = 'about:blank';
+    function arm(on) {
+        frame.inert = on;
+        guard.hidden = !on;
+        exit.hidden = on;
+        host.classList.toggle('is-idle', on);
+        if (on === live) {
+            live = !on;
+            frame.src = on ? 'about:blank' : frame.dataset.src;
+        }
+    }
+    arm(true);
+    guard.addEventListener('click', () => arm(false));
+    document.addEventListener('touchstart', e => { if (!host.contains(e.target)) arm(true); }, { passive: true, capture: true });
+})();
+
+
 /* ── Live Demo Showcase (tabbed iframes) ───────────────────── */
 (function initShowcase() {
     const tabs = document.querySelectorAll('.sc-tab');
@@ -240,24 +288,45 @@ function initCounters() {
 
     const stage = document.querySelector('.sc-stage');
     const guard = document.getElementById('sc-guard');
+    const touchUI = window.matchMedia('(hover: none)').matches;
 
     document.querySelectorAll('.sc-pane').forEach(pane => {
         const frame = pane.querySelector('iframe');
-        frame.addEventListener('load', () => pane.classList.add('is-loaded'));
+        frame.addEventListener('load', () => { if (frame.dataset.live) pane.classList.add('is-loaded'); });
     });
 
     function load(pane) {
         const frame = pane.querySelector('iframe');
-        if (!frame.getAttribute('src')) frame.src = frame.dataset.src;
+        if (!frame.dataset.live) {
+            frame.dataset.live = '1';
+            frame.src = frame.dataset.src;
+        }
+    }
+
+    function unload() {
+        stage.querySelectorAll('iframe').forEach(f => {
+            if (!f.dataset.live) return;
+            delete f.dataset.live;
+            f.src = 'about:blank';
+            f.closest('.sc-pane').classList.remove('is-loaded');
+        });
     }
 
     const frames = [...stage.querySelectorAll('iframe')];
     let inStage = false;
+    const exitBtn = touchUI ? makeExitButton(stage, () => arm(true)) : null;
+    if (touchUI) guard.firstElementChild.textContent = 'Tap to interact';
 
     // Armed = iframes are inert, so the embedded app can't take focus, grab wheel/touch input or drag the page to itself.
     function arm(on) {
         guard.classList.toggle('is-off', !on);
+        if (exitBtn) exitBtn.hidden = on;
         frames.forEach(f => { f.inert = on; });
+        if (touchUI) {
+            // The embedded app scrolls the parent page on its own, so on touch it only runs while the user interacts.
+            stage.classList.toggle('is-idle', on);
+            if (on) unload(); else load(document.querySelector('.sc-pane.active'));
+        }
         if (on && frames.includes(document.activeElement)) {
             document.activeElement.blur();
             window.focus();
@@ -274,10 +343,10 @@ function initCounters() {
     let started = false;
     new IntersectionObserver(([entry]) => {
         const away = entry.intersectionRatio < 0.2;
-        stage.classList.toggle('is-away', away);
+        if (!touchUI) stage.classList.toggle('is-away', away);
         if (!away && !started) {
             started = true;
-            load(document.querySelector('.sc-pane.active'));
+            if (!touchUI) load(document.querySelector('.sc-pane.active'));
         }
     }, { threshold: [0, 0.2, 0.4] }).observe(stage);
 
@@ -304,7 +373,9 @@ function initCounters() {
     }, opts);
     window.addEventListener('touchend', () => { dirUntil = Date.now() + 2000; }, opts);
 
+    // Touch devices use momentum scrolling, which this guard would wrongly revert.
     window.addEventListener('scroll', () => {
+        if (touchUI) return;
         const y = window.scrollY;
         const d = y - lastY;
         const now = Date.now();
@@ -328,7 +399,7 @@ function initCounters() {
         document.querySelectorAll('.sc-pane').forEach(p => p.classList.remove('active'));
 
         const pane = document.getElementById('sc-pane-' + tab.dataset.pane);
-        load(pane);
+        if (!touchUI || !stage.classList.contains('is-idle')) load(pane);
         pane.classList.add('active');
 
         desc.textContent = tab.dataset.desc;
